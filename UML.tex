@@ -1,0 +1,73 @@
+\section{UML (Universal Modeling Language)}
+\definition{Kardinalität}{Die Anzahl der Elemente einer Menge (Ganzzahl $\geq 0$).}
+\definition[0]{Multiplizizät}{ein geschlossenes Intervall der zulässigen Kardinalitäten.}
+%
+\begin{itemize}
+    \item 0..1 $\rightarrow$ 0 oder 1
+    \item 0.. $\rightarrow$ mindestens 0
+    \item x..* $\rightarrow$ mindestens x
+    \item x $\rightarrow$ \textbf{genau} x
+    \item * $\rightarrow$ 0,1 oder mehrere
+\end{itemize}
+\important{Keine Angabe heißt nicht Spezifiziert $\rightarrow$ IMMER GENAU 1}
+
+
+\definition{Qualifizierer}{(eng. qualifier): Ein(e) Attribut(kombination), die eine Partionierung auf der Menge der \important{assoziierten} Exemplaren definiert.}
+\definition{Qualifizierte Assoziation}{(engl. qualified association): Eine Assoziation, bei der die Menge der refernzierten Objekte durch einen Qualifizierer partitioniert ist.}
+
+
+\todo
+Static --> unterstrichen
+Constructor: <<create>>, name irrelevant.
+Abstrakte Methode: kursiv oder \{abstract\} als Suffix
+<<interface>> (wird mit einem gestrichekten Pfeil mit weißer Spitze implementiert <<realize>>)
+A <<uses>> B :  A benutzt etwas aus B
+
+
+\subsection{Vererbung}
+% Vererbung
+\definition[0]{Vererbung}{Es seien A und B Klassen, sowie $\Omega_A$ und $\Omega_B$ die Menge der Objekte, die die Klassen A und B ausmachen. Dann ist B eine \important{Unterklasse/Spezifizierung} von A (oder A eine \important{Oberklasse/Generalisierung} von B), wenn gilt: $\Omega_B\subseteq\Omega_A$.
+\newline\indent
+Man sagt dann auch, dass B von A erbt. Da jedes Exemplar von B auch ein Exemplar von A ist, heißt die Beziehung zwischen A und B die \anfuehrung{\important{ist-ein-Beziehung}} (engl. is-a relation). Wenn A mehrere Unterklassen hat, so sollten diese Unterklassen in der Regel disjukt sein.
+}
+\anmerkung[1]{$\Omega_B\subseteq\Omega_A$}{Diese Teilmengenrelation gilt, da $\Omega_A$ alle Klassen enthält, die mindestens die angegebenen Attribute beinhalten, allerdings auch beliebig viele andere.}
+% Signaturvererbung
+\definition{Signaturvererbung}{(engl. signature inheritance) Eine in der Oberklasse definert und evtl. implementierte Methode überträgt nur ihre Signatuir auf die Unterklasse.}
+% Implementierungsvererbung
+\definition{Implementierungsvererbung}{(engl. implementation inharitance)Eine in der Oberklasse definierte und implementierte Methode überträgt ihre \important{Signatur und ihre Implementierung} auf die Unterklasse.}
+% Überschreiben
+\definition{Überschreiben}{(engl. override): Eine geerbte Methode unter Beibehaltung der Signatur wird \important{neu implementiert}}
+% Abstrakte Methode
+\definition{Abstrakte Methode}{(engl. abstract method): Signaturdefinition ohne Angabe einer Implementierung}
+% Schnittstelle
+\definition[0]{Schnittstelle}{(engl. interface): Definition einer Menge \important{abstrakter} Methoden, die von den Klassen, die sie implementieren, angeboten werden müssen.}
+\anmerkung[0]{}{Schnittstelle nicht direkt instanziierbar.}
+\anmerkung[0]{}{Nutzende Klasse darf beliebige implementierende Klasse instanziieren.}
+\imp[1]{}{Bei Schnittstellen gibt es keine Vererbung}
+\definition[1]{}{Wenn eine Schnittstelle B eine Schnittstelle A \important{erweitert}, dann ist die Menge der abstrakten Methoden von A eine Teilmenge der Mengen der abstrakten Methoden von B ($A\subseteq B$).}
+\definition[1]{}{Wenn eine Klasse X eine Schnittstelle A \important{implementiert}, dann ist die Menge der abstrakten Methoden von A eine Teilmenge der Methodendefinitionen von X, wobei X zusätzlich jeweils eine Implementierung angeben \underline{darf}.}
+
+\subsection{Liskovsches Substitutionsprinzip}
+\todo{Change image}\\
+\principle[0]{Liskovsches Substitutionsprinzip}{(engl. Liskov substitution priciple): In einem Programm, in dem U eine Unterklasse von K ist, kann jedes Exemplar der Klasse K durch ein Exemplar von U ersetzet werden, wobei das Programm weiterhin korrekt funktioniert.)}
+\anmerkung[0]{}{Das Substitutionsprinzip fordert nur, dass man ein Exemplar der Unterklasse so verwenden kann, als wäre es ein Exemplar der Oberklasse. Es wird nicht gefordert, dass die Signatur gleich bleibt!}
+\anmerkung[0]{}{Die Unterklasse hat die gleichen oder schwächere Vorbedingungen als die Oberklasse\\
+Für Methoden heißt das, dass bei einer Substitution der Oberklasse durch eine Unterklasse die Vorbedingungen der Unterklassenmethode ebenfalls erfüllt sind.}
+\anmerkung[0]{}{Die Unterklasse bietet die gleichen oder stärkeren Nachbedingungen wie die Oberklasse\\
+Für Methoden heißt das, dass bei einer Substitution die Ergebnisse der Unterklassenmethode die Bedingungen erfüllen, die an die Oberklassenmethode gestellt werden.}
+\anmerkung[1]{}{Unterklassenmethoden dürfen nicht mehr erwarten und weniger liefern.}
+
+\subsection{Varianzen von Parametern}
+% Varianz
+\definition[1]{Varianz}{(engl. variance): Modifikation der Typen der Parameter einer überschriebenen Methode.}
+% Kovarianz
+\definition[0]{Kovarianz}{(engl. covariance): Verwendung einer Spezialisierung des Parametertyps in der überschreibenden Methode}
+\imp[0]{}{Bei Eingabeparametern ein Problem}
+\anmerkung[1]{}{Bei Rückgabewerten unproblematisch}
+% Kontravarianz
+\definition[0]{Kontravarianz}{(engl. contravariance): Verwendung einer Verallgemeinerung des Parametertyps in der überschreibenden Methode}
+\anmerkung[0]{}{Bei Eingabeparametern unproblematisch}
+\imp[1]{}{Bei Rückgabewerten ein Problem}
+% Invarianz
+\definition[0]{Invarianz}{(engl. invariance): keine Modifikation der Typen}
+\anmerkung[1]{}{Invarianz ist nie ein Problem}

@@ -1,8 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
-
-
 % Version, bitte bei jeder Veröffentlichung entsprechend inkrementieren.
 \newcommand{\version}{0.0.1}
 
@@ -21,6 +19,10 @@
 \usepackage{hyperref}
 %\usepackage{sourceserifpro}
 
+% Font-awesome
+%\usepackage{fontspec}
+\usepackage{fontawesome}
+
 %Bilder
 \graphicspath{ {./images/}}
 
@@ -30,9 +32,9 @@
 
 % Author-Information
 %\newcommand{\ushortWithMail}[1]{\href{mailto:#1@student.kit.edu}{#1}}
-\newcommand{\ourMails}[1]{\href{mailto:uwgmn@student.kit.edu;ujict@student.kit.edu;udlzq@student.kit.edu;uiynn@student.kit.edu?subject=LA-Zusammenfassung}{#1}}
-\newcommand{\ushort}{\ourMails{uwgmn, ujict, udlzq, uiynn}}
-\newcommand{\myName}{Julian Keck, Julian Leitner, ..., ...}
+\newcommand{\ourMails}[1]{\href{mailto:uwgmn@student.kit.edu;ujict@student.kit.edu;uzytw@student.kit.edu;udlzq@student.kit.edu;uzytw@student.kit.edu;uiynn@student.kit.edu?subject=SWT-Zusammenfassung}{#1}}
+\newcommand{\ushort}{\ourMails{uwgmn, ujict, uzytw, udlzq, uiynn}}
+\newcommand{\myName}{Julian Keck, Julian Leitner, Christian Schliz, Niklas, Möwe}
 \newcommand{\myEmail}{\ushort@student.kit.edu}
 \newcommand{\creationYear}{2021}
 
@@ -42,9 +44,9 @@
 \ihead{}
 \chead{}
 \ohead{}
-\lofoot{\ourMails{\footnotesize Fehler oder Vorschläge? $\Rightarrow$ Schreib gerne ne Mail :-) }}
+\lofoot{\ourMails{\footnotesize Fehler oder Vorschläge? $\Rightarrow$ Schreib gerne ne Mail \faEnvelope }}
 \cfoot{\pagemark}
-\rofoot{\small{\textcopyright}  \ushort $\;$-$\;$\creationYear}
+\rofoot{\small{\faCopyright}  \ushort $\;$-$\;$\creationYear}
  %\pagemark
 
 % Layout
@@ -66,6 +68,10 @@
 % Graphen
 \usepackage{tikz}
 \usetikzlibrary{trees}
+
+% Balken neben Texten
+\usepackage[color, leftbars]{changebar}
+\setlength\changebarsep{5pt}
 
 % Aufzählingsbeschriftung anpassen
 \renewcommand\labelenumi{(\roman{enumi})}
@@ -94,6 +100,8 @@
 \newcommand{\vectors}[1]{#1_1, \dots, #1_n}
 
 
+\newcommand{\todo}{\strong{TODO: }}
+
 \newcommand{\kapitel}[2]{Kapitel #1 - \textsc{#2}}
 
 
@@ -106,11 +114,74 @@
 % Text-Layout-Spezifische commands!
 \newcommand{\strong}[1]{\textbf{\strongColor{#1}}}
 \newcommand{\important}[1]{\textcolor{importantColor}{#1}}
+
+% Definitionen
+\newcommand{\definition}[3][1]{
+    \noindent
+    \faArchive$\:$
+    \textbf{\textcolor{lightblue}{#2}}
+    \cbstart
+    %(\textit{#2})
+    \cbcolor{lightblue}
+    #3
+    \cbend
+    \newline
+    \ifnum#1=1 \break\else\textsc{}\fi
+    %
+}
+
+% Definitionen
+\newcommand{\principle}[3][1]{
+    \noindent
+    \faExclamationCircle$\:$
+    \textbf{\textcolor{orange}{#2}}
+    \cbstart
+    %(\textit{#2})
+    \cbcolor{orange}
+    #3
+    \cbend
+    \newline
+    \ifnum#1=1 \break\else\textsc{}\fi
+    %
+}
+
+% Definitionen
+\newcommand{\imp}[3][1]{
+    \noindent
+    \faExclamationCircle$\:$
+    \textbf{\textcolor{red}{#2}}
+    \cbstart
+    %(\textit{#2})
+    \cbcolor{red}
+    #3
+    \cbend
+    \newline
+    \ifnum#1=1 \break\else\textsc{}\fi
+    %
+}
+
+% Anmerkung
+\newcommand{\anmerkung}[3][1]{
+    \noindent
+    \faLightbulbO$\:$
+    \textbf{\textcolor{ForestGreen}{#2}}
+    \cbstart
+    %(\textit{#2})
+    \cbcolor{ForestGreen}#3
+    \cbend
+    \newline
+    \ifnum#1=1 \break\else\textsc{}\fi
+}
+
+
+
 \newcommand{\verweis}[1]{\textcolor{ForestGreen}{#1}}
 \newcommand{\example}[1]{\textit{Beispiel: }#1}
 \newcommand{\anfuehrung}[1]{\flqq #1\frqq}
 
 \newcommand{\abb}[3]{#1:\;\begin{aligned}[t]#2\\#3\end{aligned}}
+
+
 
 
 
@@ -151,11 +222,22 @@
     
     % Mal schnell eine Abbildung mit Definitionsbereichen definieren [zwei Zeilen]
     \item Sei $\abb{\varphi}{\R^n\to\R^n}{v\mapsto Av}$ %
+    
+    \item \definition{Softwaretechnik}{wird von Walter F. Tichy gelehrt.}
 \end{itemize}
 \newpage
 
 \section{Vorbemerkungen}
 
+
+
 \subfile{Begriffsdefinitionen}   % Begriffsdefinitionen
+\newpage
+
+\subfile{Software}
+\newpage
+
+\subfile{UML}
+\newpage
 
 \end{document}

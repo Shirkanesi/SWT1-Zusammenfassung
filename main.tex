@@ -1,0 +1,161 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+
+
+% Version, bitte bei jeder Veröffentlichung entsprechend inkrementieren.
+\newcommand{\version}{0.0.1}
+
+% Sonderzeichen ermöglichen
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{bbm}
+\usepackage{enumitem}
+\usepackage{subfiles}
+\usepackage{ mathrsfs }
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\usepackage{sourceserifpro}
+
+%Bilder
+\graphicspath{ {./images/}}
+
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% Author-Information
+%\newcommand{\ushortWithMail}[1]{\href{mailto:#1@student.kit.edu}{#1}}
+\newcommand{\ourMails}[1]{\href{mailto:uwgmn@student.kit.edu;ujict@student.kit.edu;udlzq@student.kit.edu;uiynn@student.kit.edu?subject=LA-Zusammenfassung}{#1}}
+\newcommand{\ushort}{\ourMails{uwgmn, ujict, udlzq, uiynn}}
+\newcommand{\myName}{Julian Keck, Julian Leitner, ..., ...}
+\newcommand{\myEmail}{\ushort@student.kit.edu}
+\newcommand{\creationYear}{2021}
+
+%Kopf und Fußzeile
+\usepackage{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\ihead{}
+\chead{}
+\ohead{}
+\lofoot{\ourMails{\footnotesize Fehler oder Vorschläge? $\Rightarrow$ Schreib gerne ne Mail :-) }}
+\cfoot{\pagemark}
+\rofoot{\small{\textcopyright}  \ushort $\;$-$\;$\creationYear}
+ %\pagemark
+
+% Layout
+\sectionfont{\scshape}
+
+%Subtitle
+\usepackage{relsize}
+\newcommand{\subtitlerelsize}{1} %relative size: integer value
+\newcommand{\subtitlelinesep}{0.1em} %line separation: a LaTeX length
+
+% Hyperlinks in das Dokument einfügen
+\usepackage{hyperref}
+
+% Mathe-Packages einbinden
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% Graphen
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+% Aufzählingsbeschriftung anpassen
+\renewcommand\labelenumi{(\roman{enumi})}
+\renewcommand\theenumi\labelenumi
+
+%Farbdefinitionen
+\definecolor{strongColor}{RGB}{189, 66, 0}
+\definecolor{lightblue}{RGB}{0, 140, 232}
+\definecolor{importantColor}{RGB}{163, 19, 0}
+\definecolor{ForestGreen}{RGB}{34,139,34}
+
+% Mathematik-Definitionen
+\newcommand{\N}{\mathbb{N_+}} %Natürliche Zahlen (ohne 0)
+\newcommand{\Nz}{{\mathbb{N}_0}} %Natürliche Zahlen (mit 0)
+\newcommand{\Z}{\mathbb{Z}} % Ganze Zahlen
+\newcommand{\Q}{\mathbb{Q}} % Rationale Zahlen
+\newcommand{\R}{\mathbb{R}} % Reelle Zahlen
+\newcommand{\C}{\mathbb{C}} % Komplexe Zahlen
+\newcommand{\K}{\mathbb{K}} % Körper
+\newcommand{\F}{\mathbb{F}} % Fields [F_2]
+\newcommand{\matr}[1]{\begin{pmatrix}#1\end{pmatrix}} % Matrizen [leider ist \matrix wegen asmmath nicht direkt möglich.]
+\newcommand{\vektor}[1]{\matr{#1}} %Vektoren
+\newcommand{\set}[1]{\{#1\}} % Mengen
+\newcommand{\ematr}{\mathbbmtt{1}}
+\newcommand{\invers}[1]{#1^{-1}}   % Inverse einer Zahl. Für x -> x^-1
+\newcommand{\vectors}[1]{#1_1, \dots, #1_n}
+
+
+\newcommand{\kapitel}[2]{Kapitel #1 - \textsc{#2}}
+
+
+% Farbdefinitionen
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\babyblue}[1]{\textcolor{lightblue}{#1}}
+\newcommand{\strongColor}[1]{\textcolor{strongColor}{#1}}
+
+% Text-Layout-Spezifische commands!
+\newcommand{\strong}[1]{\textbf{\strongColor{#1}}}
+\newcommand{\important}[1]{\textcolor{importantColor}{#1}}
+\newcommand{\verweis}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\example}[1]{\textit{Beispiel: }#1}
+\newcommand{\anfuehrung}[1]{\flqq #1\frqq}
+
+\newcommand{\abb}[3]{#1:\;\begin{aligned}[t]#2\\#3\end{aligned}}
+
+
+
+\title{SWT-1 - Modulzusammenfassung SS2021\\[\subtitlelinesep]%
+    \smaller[\subtitlerelsize]{}Version \version}
+\author{\ushort\\\myName}
+
+\date{Stand: \today}
+
+
+
+\begin{document}
+
+
+\maketitle
+
+% \href{https://www.youtube.com/watch?v=q7oVvnlR0oQ}{\includegraphics[width=\textwidth]{spaltendermatrix}}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Übersicht über die implementierten Layout-Commands}
+\subsection{Unterüberschrift}
+\subsubsection{UnterUnterüberschrift}
+\begin{itemize}
+    \item \important{Bäume} sind \strong{Pflanzen}
+    \item \anfuehrung{Ich stehe in Anführungszeichen}
+    \item \verweis{Ich bin grün, eigentlich aber als Verweis gedacht}
+    \item Hier\footnote{Beginnt eine Fußnote}
+    
+    \item $\N, \Nz, \Z, \Q, \R, \C, \K, \F, \ematr$
+    %Matrix%
+    \item $\matr{1&2&3\\4&5&6\\7&8&9}\in\R^{3\times 3}$
+    
+    % Mal schnell eine Abbildung mit Definitionsbereichen definieren
+    \item $\varphi: \R^n\to\R^n: v\mapsto Av$
+    
+    % Mal schnell eine Abbildung mit Definitionsbereichen definieren [zwei Zeilen]
+    \item Sei $\abb{\varphi}{\R^n\to\R^n}{v\mapsto Av}$ %
+\end{itemize}
+\newpage
+
+\section{Vorbemerkungen}
+
+\subfile{Begriffsdefinitionen}   % Begriffsdefinitionen
+
+\end{document}

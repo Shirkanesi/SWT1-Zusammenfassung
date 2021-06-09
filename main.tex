@@ -14,10 +14,17 @@
 \usepackage{bbm}
 \usepackage{enumitem}
 \usepackage{subfiles}
-\usepackage{ mathrsfs }
+\usepackage{mathrsfs}
 \usepackage{graphicx}
 \usepackage{hyperref}
 %\usepackage{sourceserifpro}
+
+%\usepackage{wrapfig}
+%\usepackage{caption}
+%\captionsetup[wrapfigure]{margin=0cm, textfont=small, labelfont=small}
+
+%\usepackage{graphicx}
+%\graphicspath{ {./images/} }
 
 % Font-awesome
 %\usepackage{fontspec}
@@ -37,6 +44,25 @@
 \newcommand{\myName}{Julian Keck, Julian Leitner, Christian Schliz, Niklas, Möwe}
 \newcommand{\myEmail}{\ushort@student.kit.edu}
 \newcommand{\creationYear}{2021}
+
+\newcommand{\figA}[2]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1\textwidth]{#2}
+        \caption{#1}
+    \end{figure}
+}
+\usepackage{caption}
+\newcommand{\fig}[2]{
+    % \newline
+    \begin{minipage}{\linewidth}
+        \captionsetup{type=figure}
+        \begin{center}
+        \includegraphics[width=0.8\linewidth]{#2}
+        \captionof{figure}{#1}
+        \end{center}
+    \end{minipage}
+}
 
 %Kopf und Fußzeile
 \usepackage{scrlayer-scrpage}
@@ -145,6 +171,10 @@
     %
 }
 
+\newcommand{\warn}[3][1]{
+    \principle[#1]{#2}{#3}
+}
+
 % Definitionen
 \newcommand{\imp}[3][1]{
     \noindent
@@ -229,4 +259,15 @@
 \subfile{ModularerEntwurf}
 \newpage
 
+\subfile{Architekturstile}
+\newpage
+
+\subfile{Entwurfsmuster}
+\newpage
+
+\subfile{Entwurfsphase}
+\newpage
+
+
+\listoffigures
 \end{document}

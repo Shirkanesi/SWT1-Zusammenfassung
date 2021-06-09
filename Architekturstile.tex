@@ -1,0 +1,27 @@
+\section{Architekturstile}
+\definition[0]{Architekturstil}{Die Architekturstile legen den \important{Grobaufbau} eines Softwaresystems fest.}
+
+\definition[0]{Schichtenarchitektur}{ist die Gliederung einer Softwarearchitektur in hierarchisch geordnete Schichten. Eine Schicht besteht aus einer Menge von Software- Komponenten (Module, Klassen, Objekte, Pakete) mit einer wohldefinierten Schnittstelle, nutzt die darunter liegenden Schichten und stellt seine Dienste darüber liegenden Schichten zur Verfügung.}
+\anmerkung[1]{}{Zwischen den einzelnen Schichten ist die Benutztrelation linear, baumartig, oder ein azyklischer Graph. Innerhalb einer Schicht ist die Benutztrelation beliebig}
+\fig{Beispiel für eine Drei-Schichten-Architektur}{./data/architekturstile/3_schichten_architektur.png}
+
+\begin{itemize}
+    \item Eine Schicht (engl. \textit{layer, tier}) ist ein Subsystem, welches Dienste für andere Schichten zur Verfügung stellt, mit folgenden Einschränkungen:
+    \begin{itemize}
+        \item Eine Schicht nutzt nur Dienste von niedrigeren Schichten
+        \item Eine Schicht nutzt keine höheren Schichten
+    \end{itemize}
+    \item Eine Schicht kann horizontal in mehrere, unabhängige Subsysteme, auch Partitionen genannt, aufgeteilt werden
+    \begin{itemize}
+        \item Partitionen bieten Dienste für andere Partitionen der gleichen Schicht an
+    \end{itemize}
+\end{itemize}
+\anmerkung[1]{Transparente und Intransparente Schichten}{Eine Schicht in einer transparenten Schicht kann auf alle Beliebigen Schichten im Stapel zugreifen. Schichten im intransparenten Modell können Dies nicht.}
+
+\definition[0]{Klient/Dienstgeber}{}
+\definition[0]{Partnernetze}{}
+\definition[0]{Datenablage}{}
+\definition[0]{Modell-Präsentation-Steuerung}{}
+\definition[0]{Fließband}{}
+\definition[0]{Rahmenarchitektur}{}
+\definition[0]{Dienstorientierte Architektur}{}

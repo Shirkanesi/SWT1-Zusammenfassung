@@ -2,8 +2,115 @@
 \definition{Modul}{Ein Modul ist eine Menge von Programmelementen, die nach dem Geheimnisprinzip gemeinsam entworfen und geändert werden.}
 \definition{Geheimnisprinzip / Kapselungsprinzip}{Jedes Modul verbirgt eine wichtige Entwurfsentscheidung hinter einer wohldefinierten Schnittstelle, die sich bei einer Änderung der Entscheidung nicht mit ändert}
 \definition{Benutztrelation}{Programmkomponente A benutzt Programmkomponente B $\Leftrightarrow$ A benötigt für den korrekten Ablauf die korrekte Implementierung von B}
+\definition[0]{Benutzhierarchie}{Eine zyklenfreie Benutzrelation}
 
 \definition{Programmfamilie / Softwareproduktlinie}{ist eine Menge von Programmen, die erhebliche Anteile von Anforderungen, Entwurfsbestandteilen oder Softwarekomponenten gemeinsam haben.}
 
 \definition[0]{Schichtenarchitektur}{ist die Gliederung einer Softwarearchitektur  in hierarchisch geordnete Schichten. Zwischen den einzelnen Schichten ist die Benutztrelation linear, baumartig, oder ein azyklischer Graph. Innerhalb einer Schicht ist die Benutztrelation beliebig.}
 \definition{Schicht}{besteht aus einer Menge von Softwarekomponenten (Module, Klassen, Objekte, Pakete) mit einer wohldefinierten Schnittstelle, nutzt die darunter liegenden Schichten und stellt seine Dienste darüber liegenden Schichten zur Verfügung.}
+\definition[0]{In-/Transparente Schichtenarchitektur}{Bei einer transparenten Schichtenarchitektur können bei einer Benutzt-Relation Schichten übersprungen werden. Bei intransparenter Architektur muss jede Schicht bis zur Zielschicht durchlaufen werden.}
+
+\subsection{Modulführer (Grobentwurf)}
+\begin{itemize}
+    \item Gliederung in Komponenten
+    \item Beschreibung der Funktion
+    \item Benutzt Architekturstile. z.B. Schichten- oder Fließbandarchitektur
+\end{itemize}
+\subsection{Modulschnittstellen}
+\begin{itemize}
+    \item Genaue Beschreibung der von jedem Modul zur Verfügung gestellten Elemente
+    \item Bei Ein-/Ausgabe genaue Beschreibung der entsprechenden Formate (XML, JSON oder Grammatik)
+\end{itemize}
+\subsection{Benutztrelation}
+\begin{itemize}
+    \item Gliederung Komponenten und Subsysteme
+    \item Beschreibung wie sich Module und Subsysteme untereinander benutzen.
+    \item Sollte ein Azyklicher, gerichteter Graph sein.
+\end{itemize}
+\subsection{(Optional) Feinentwurf}
+\begin{itemize}
+    \item Beschreibung der modul-internen Datenstrukturen und Algorithmen.
+    \item Algorithmen in Pseudocode, welche in der Implementierungsphase übersetzt werden.
+\end{itemize}
+
+\subsection{Externer/Interner Entwurf}
+\begin{itemize}
+    \item Externer Entwurf
+    \begin{itemize}
+        \item Grobentwurf
+        \item Feinentwurf
+    \end{itemize}
+    \item Interner Entwurf
+    \begin{itemize}
+        \item Benutztrelation
+        \item Feinentwurf
+    \end{itemize}
+\end{itemize}
+
+\subsection{Anforderungen an das Modulkonzept}
+\begin{itemize}
+    \item Module sollen unabhängig entwickelt und benutzt werden können.
+    \item Implementierung sollte möglich sein ohne die Implementierungsdetails zu wissen.
+    \item Es sollte ohne Kenntnis seines inneren Aufbaus benutzt werden können.
+    \item Ein Modul enthält mehrere Unterprogramme, welche die Datenstrukturen manipulieren können. Direkter Zugriff auf die Datenstruktur über andere Module ist nicht möglich.
+    \item Starke Bindung innerhalb des Moduls. Schwache außerhalb.
+    \item Ein Modul soll so einfach sein das es verständlich ist.
+\end{itemize}
+
+\subsection{Das Modul}
+\begin{itemize}
+    \item Änderungen sollten ohne Schnittstellenänderungen möglich sein.
+    \item Falls Schnittstellenänderungen nötig sind, sollten diese nur bei wenigen Modulen erfolgen müssen.
+    \item Geheimnisprinzip einhalten
+    \item Verbergung von Implementierungsdetails. (Datenstrukturen, maschinennahe/betriebssystemnahe Details, Datenbanken)
+\end{itemize}
+
+\subsection{Modulführer}
+\begin{itemize}
+    \item Beschreibt Modul oder Subsystem
+    \item Vermeidet Duplikate, Lücken
+     \item Liefert eine Zerlegung der Probleme
+     \item Erleichtert das Auffinden von betroffenen Modulen während Wartungen
+\end{itemize}
+
+\subsection{Modulschnittstellen}
+\begin{itemize}
+    \item Ergebnis: "Black Box" - Implementierungsdetails sind nach außen nicht sichtbar.
+    \item Beschreibung besteht aus einer Liste der Programmelemente sowie deren Ausgabeformate, Parametern und Rückgabetypen
+\end{itemize}
+
+\subsection{Gestaltung der Benutztrelation}
+\begin{itemize}
+    \item A delegiert Arbeit nach B (Delegationsrelation)
+    \item A greift auf Variable von B zu
+    \item A ruft B auf, wobei A korrekten Ablauf von B erfordert. 
+    \item A legt eine Instanz eines Typs aus B an.
+    \item A steuert B durch Unterbrechung oder Ereignisse an
+\end{itemize}
+Die Benutztrelation kann eine Halbordung oder eine Totalordnung sein.
+
+\section{Objektorientierter Entwurf}
+
+Die Prinzipien des modularen Entwurfs behalten ihre Gültigkeit
+
+\subsection{Externer Entwurf}
+\begin{itemize}
+    \item Die Analoge zum Modul sind die Klasse und das Paket.
+    \item Im Paket werden mehrere Klassen, die gemeinsame Entwurfsentscheidungen kapseln, zusammengefasst.
+    \item Eine eine einzige Klasse kann auch ein ganzes Modul verwirklichen.
+    \item Anstelle des Modulführers tritt der der Paket- und Klassenführer, i.d.R. als UML-Klassen- und UML-Paketdiagramm
+    \item Das Analoge zu den Modulschnittstellen sind die Schnittstellen der Klassen, abstrakten Klassen und reine Schnittstellen (Interfaces)
+\end{itemize}
+
+\subsection{Interner Entwurf}
+\begin{itemize}
+    \item Die Benutztrelation wird auf der Ebene von Paketen und allein stehenden Klassen dokumentiert.
+    \item Der Feinentwurf liefert die Beschreibung der modulinternen Datenstrukturen und Algorithmen, sowie Pseudocode wo erforderlich.
+\end{itemize}
+
+Zusätlich ergeben sich im OO-Entwurf zusätliche Möglichkeiten
+\begin{itemize}
+    \item Mehrfach-Instanzierung von Klassen
+    \item Vererbung und Polymorphie
+    \item Variantenbildung in einem Programm durch Mehrfachimplementierunge einer Schnittstelle
+\end{itemize}

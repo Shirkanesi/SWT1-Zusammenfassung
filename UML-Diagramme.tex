@@ -24,3 +24,48 @@
 \fig{Beispiel Aktivitätsfalldiagramm}{./data/uml/Aktivitätsdiagramm.png}
 \fig{Elemente eines Aktivitätsdiagramms}{./data/uml/elemente.png}   %Eventuell richtig machen idk lol.
 \fig{Semantisches Beispiel}{./data/uml/aktivität_beispiel.png}
+\fig{Synchronisieren}{./data/uml/aktivität_sync.png}
+
+\section{Interaktionsdiagramme}
+
+\begin{itemize}
+    \item Zeigen die für einen bestimmten Zweck notwendigen Interaktionen zwischen Objekten
+    \item Das Klassendiagramm ist Grundlage der Interaktionsdiagramme
+    \item Vier Typen
+    \begin{itemize}
+        \item Kollaborationsdiagramm / Kommunikationsdiagramm
+        \begin{itemize}
+            \item Schwerpunkt: Struktur der Interaktionspartner
+        \end{itemize}
+        \item Zeitdiagramm
+        \begin{itemize}
+            \item Schwerpunkt: Zeitliche Koordination
+        \end{itemize}
+        \item Interaktionsübersicht
+        \begin{itemize}
+            \item Aktivitätsdiagramm zur Veranschaulichung komplexer Sequenzdiagramme
+        \end{itemize}
+        \item Sequenzdiagramm
+        \begin{itemize}
+            \item Schwerpunkt: Nachrichtenaustausch
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Aktivitätsdiagramm}
+\fig{Aktivitätsdiagramm: Beispiel}{./data/uml/sequenz.png}
+
+
+\begin{table}[h]
+\begin{tabular}{l|l|l}
+Operator & Bed./Parameter                         & Bedeutung                                                                                \\
+\hline
+alt      & {[}bed.1{]},{[}bed.1{]},...,{[}else{]} & Nur eine der Alternativen wird ausgeführt                                                \\
+break    & {[}bed{]}                              & Ist die Bed. wahr, dann wir nur der Block ausgeführt und anschließend\\&& endet das Szenario. \\
+opt      & {[}bed{]}                              & Optionale Sequenz. Wird nur Ausgeführt, wenn Bed. wahr ist.                              \\
+par      &                                        & Enthaltene Teilsequenzen werden parallel ausgeführt.                                     \\
+loop     & {[}bed{]}                              & Solange die Bed. wahr ist, wird der Block ausgeführt.                                   
+\end{tabular}
+\caption{Operatoren zur Ablaufsteuerung}
+\label{tab:ablaufsteuerung}
+\end{table}

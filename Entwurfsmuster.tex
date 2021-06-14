@@ -119,5 +119,21 @@ Anwendbar, wenn
 
 \fig{Beispiel eines Besuchers anhand eines Abstrakten Syntaxbaumes}{./data/entwurfsmuster/variantenmuster/besucher_example.png}
 
+Anwendbar, wenn
+\begin{itemize}
+    \item eine Objektstruktur viele Klassen von Objekten mit unterschiedlichen Schnittstellen enthält und Operationen auf diesen ausgeführtt werden sollen, die von ihren konkreten Klassen abhängen
+    \item mehrere unterschiedliche und nicht miteinander verwandte Operationen auf den Objekten einer Objektstruktur Objektstruktur ausgeführt werden müssen und diese Klassen nicht mit dieser Operation "verschmutzt" werden sollen
+\end{itemize}
+
 \subsubsection{Kompositum}
-\definition[0]{Zweck}{Füge Objekte zu Baumstrukturen zusammen, um Bestands-Hierarchien zu repräsentieren. Ermöglicht es Klienten, sowohl einzelne Objekte als auch Aggregate einheitlich zu behandeln}
+\definition[0]{Kompositum}{Fügt Objekte zu Baumstrukturen zusammen, um Bestands-Hierarchien zu repräsentieren. Ermöglicht es Klienten, sowohl einzelne Objekte als auch Aggregate einheitlich zu behandeln.}
+
+\fig{Struktur eines Kompositums}{./data/entwurfsmuster/variantenmuster/kompositum_1.png}
+
+\fig{Beispiel eines Kompositums anhand von Java AWT}{./data/entwurfsmuster/variantenmuster/kompositum_example.png}
+
+Anwendbarkeit:
+\begin{itemize}
+    \item Wenn Bestands-Hierarchien von Objekten repräsentiert werden sollen.
+    \item Wenn die Klienten in der Lage sein sollen, die Unterschiede zwischen zusammengesetzten und einzelnen Objekten zu ignorieren.
+\end{itemize}

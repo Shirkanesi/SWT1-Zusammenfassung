@@ -8,23 +8,23 @@
 \subsubsection{Adapter}
 \definition[0]{Adapter}{Passt die Schnittstelle einer Klasse an eine Andere von ihren Klienten erwartete Schnittstelle an.}
 \anmerkung[0]{}{$\Rightarrow$ Klassen können zusammenarbeiten, die wegen inkompatibler Schnittstelle ansonsten nicht in der Lage wären.}
-\fig{Adapter ohne Mehrfachvererbung}{data/entwurfsmuster/adapter_1.png}
-\fig{Adapter mit Mehrfachvererbung}{data/entwurfsmuster/adapter_2.png}
+\fig{Adapter ohne Mehrfachvererbung}{./data/entwurfsmuster/entkopplungsmuster/adapter_1.png}
+\fig{Adapter mit Mehrfachvererbung}{./data/entwurfsmuster/entkopplungsmuster/adapter_2.png}
 
 \subsubsection{Beobachter / Observer}
 \definition[0]{Beobachter}{Ein Beobachter beobachtet ein Objekt und informiert andere Objekte über Änderungen an diesem.}
 \anmerkung[0]{}{Ein Beobachter definiert eine 1-zu-n Abhängigkeit zwischen Objekten, so dass die Änderung eines Zustandes eines Objektes dazu führt, dass alle abhängigen Objekte benachrichtigt und automatisch aktualisiert werden.}
 \newline
-\fig{Struktur eines Beobachters}{data/entwurfsmuster/observer_1.png}
+\fig{Struktur eines Beobachters}{./data/entwurfsmuster/entkopplungsmuster/observer_1.png}
 \newline
-\fig{Beobachter - Beispiel aus Java}{data/entwurfsmuster/observer_2.png}
+\fig{Beobachter - Beispiel aus Java}{./data/entwurfsmuster/entkopplungsmuster/observer_2.png}
 \anmerkung[0]{Anwendbarkeit}{Wenn die Änderung eines Objekts die Änderung anderer Objekte verlangt und man nicht weiß, wie viele und welche Objekte geändert werden müssen.}
 \anmerkung[1]{}{Wenn ein Objekt andere Objekte benachrichtigen muss, ohne Annahmen über diese Objekte zu treffen.}
 \anmerkung[0]{Konsequenzen}{Beobachter können neu hinzugefügtoder entferntwerden, ohnedas Subjekt oder andere Beobachter zu ändern}
  
  \subsubsection{Brücke / Bridge}
  \definition[0]{Zweck}{Trennt Abstraktion von ihrer Implementierung, sodass beide unabhängig voneinander variiert werden können}
- \fig{Brücke}{data/entwurfsmuster/bridge.png}
+ \fig{Brücke}{./data/entwurfsmuster/entkopplungsmuster/bridge.png}
  \\
  Anwendbarkeit:
  \begin{itemize}
@@ -35,13 +35,13 @@
  \end{itemize}
  
  
- \fig{Beispiel für ein Brückenmuster}{data/entwurfsmuster/bridge_example.png}
+ \fig{Beispiel für ein Brückenmuster}{./data/entwurfsmuster/entkopplungsmuster/bridge_example.png}
  
  
 \subsubsection{Iterator}
 Ein Iterator ermöglicht einen \important{sequentiellen Zugriff} auf die Elemente eines zusammengesetzten Objektes, ohne seine zugrundeliegendes Repräsentation offenzulegen.
 \newline
-\fig{Struktur eines Iterators}{data/entwurfsmuster/iterator_1.png}
+\fig{Struktur eines Iterators}{./data/entwurfsmuster/entkopplungsmuster/iterator_1.png}
 \warn[0]{}{Ein funktioniert immer sequenziell}
 \anmerkung[1]{}{Das momentane Element kann aus der Datenstruktur entfernt werden.}
 \anmerkung[0]{Anwendbarkeit}{Um den Zugriff auf den Inhalt eines zusammengesetzten Objekts zu ermöglichen, ohne dabei seine interne Struktur offenzulegen.}
@@ -49,3 +49,75 @@ Ein Iterator ermöglicht einen \important{sequentiellen Zugriff} auf die Element
 
 \subsubsection{Stellvertreter / Proxy}
 \definition[0]{Stellvertreter}{Ein Proxy kontrolliert den Zugriff auf ein Objekt mit Hilfe eines vorgelagerten \important{Stellvertreterobjekts}}
+\fig{Struktur eines Stellvertreters}{./data/entwurfsmuster/entkopplungsmuster/proxy_1.png}
+\anmerkung[0]{Anwendbarkeit}{Das Stellvertretermuster ist anwendbar, sobald es den Bedarf nach einer anpassungsfähigeren und intelligenteren Referenz auf ein Objekt als einen einfachen Zeiger gibt}
+
+\subsubsection{Vermittler / Mediator}
+\definition[0]{Vermittler}{Ein Vermittler definiert ein Objekt, welches das \important{Zusammenspiel} einer Menge von Objekten in sich Kapselt}
+\anmerkung[0]{}{Vermittler fördern \important{lose Kopplung}, indem sie Objekte davon abhalten, aufeinander explizit Bezug zu nehmen. Sie ermöglichen es, das Zusammenspiel der Objekte unabhängig zu variieren.}
+\fig{Struktur eines Vermittlers}{./data/entwurfsmuster/entkopplungsmuster/vermittler_1.png}
+\anmerkung[0]{Anwendbarkeit}{Wenn eine Menge von Objekten vorliegt, die in wohl-definierter, aber \important{komplexer} Weise zusammen arbeiten. Die sich ergebenden Abhängigkeiten sind unstrukturiert und schwer zu verstehen.}
+
+\newpage
+\subsection{Varianten-Muster}
+
+\subsubsection{Strategie}
+\definition[0]{Strategie}{Eine Strategie definiert eine Familie von Algorithmen, kapselt sie und macht sie austauschbar. Das Strategiemuster ermöglicht es, den Algorithmus unabhängig von den nutzenden Klienten zu variieren.}
+
+\fig{Struktur einer Strategie}{./data/entwurfsmuster/variantenmuster/strategie_1.png}
+
+\fig{Beispiel einer Strategie [Anhand von Zeilenumbrechalgorithmen]}{./data/entwurfsmuster/variantenmuster/strategie_example.png}
+
+\anmerkung[0]{Anwendbarkeit}{Wenn unterschiedliche Varianten eines Algorithmus benötigt werden.}
+\anmerkung[0]{}{Wenn ein Algorithmus Datenstrukturen verwendet, die Klienten nicht bekannt sein sollen.}
+\anmerkung[0]{}{Wenn eine Klasse unterschiedliche Verhaltensweisen definiert und diese als mehrfache Fallunterscheidungen in ihren Operationen erscheinen. Mit Strategie kann man diese Fallunterscheidungen vermeiden (\anfuehrung{switch-lessprogramming}).}
+
+
+\subsubsection{Schablonenmethode}
+\definition[0]{Zweck}{Es wird ein Skelett eines Algorithmus als eine Operation definiert um einzelne Schritte an Unterklassen zu delegieren. Es ermöglicht die Änderung der Teilschritte in den Unterklassen ohne die Struktur des Algorithmus zu verändern}
+\fig{Schablonenmethodendiagramm}{./data/entwurfsmuster/variantenmuster/templatemethod.png}
+\\
+Die Schablonenmethode eignet sich, wenn...
+\begin{itemize}
+    \item die invarianten Teile eines Algorithmus genau einmal festgelegt werden können
+    \item Code-Duplikate von Teilalgorithmen vermieden werden sollen
+\end{itemize}
+
+
+\subsubsection{Fabrikmethode}
+\definition[0]{Fabrikmethode}{Eine Fabrikmethode definiert eine Klassenschnittstelle mit Operationen zum Erzeugen eines Objekts, aber lässt Unterklassen entscheiden, \important{von welcher Klasse} das zu erzeugende Objekt ist. Fabrikmethoden ermöglichen es, einer Klasse die Erzeugung von Objekten an Unterklassen zu \important{delegieren}.}
+
+\fig{Struktur einer Fabrikmethode}{./data/entwurfsmuster/variantenmuster/fabrikmethode_1.png}
+
+\fig{Fabrikmethode - Beispiel anhand von Wänden}{./data/entwurfsmuster/variantenmuster/fabrikmethode_example.png}
+
+Anwendbar, wenn
+\begin{itemize}
+    \item die Klasse die Klasse seiner zu erzeugenden Objekte nicht im voraus kennen kann
+    \item eine Klasse möchte, dass ihre Unterklassen festlegen, welche Objekte erzeugt werden sollen
+\end{itemize}
+
+\subsubsection{Abstrakte Fabrik (engl. abstract factory)}
+\definition[1]{Abstrakte Fabrik}{Bietet eine Schnittstelle zum \important{Erzeugen von Familien} verwandter oder voneinander abhängiger Objekte, ohne ihre konkreten Klassen zu benennen.}
+
+\fig{Struktur einer abstakten Fabrik}{./data/entwurfsmuster/variantenmuster/abstake_fabrik_1.png}
+
+% \fig{Abstrakte Fabrik - Beispiel anhand einer Widget-Fabrik}{./data/entwurfsmuster/variantenmuster/abstake_fabrik_example.png}
+\fig{Abstrakte Fabrik - Beispiel anhand von Pizza}{./data/entwurfsmuster/variantenmuster/abstake_fabrik_example2.png}
+
+Anwendbar, wenn
+\begin{itemize}
+    \item ein System \important{unabhängig} davon sein soll, wie seine Produkte erzeugt, zusammengesetzt und repräsentiert werden.
+    \item Wenn ein System mit einer von mehreren \important{Produktfamilien} konfiguriert werden soll.
+    \item Bei einer Klassenbibliothek, die nur die Schnittstellen, nicht aber die Implementierung offenlegt.
+\end{itemize}
+
+\subsubsection{Besucher (engl. visitor)}
+\definition[1]{Besucher}{Ein Besucher kapselt eine auf eine Objektstruktur auszuführende \important{Operation} als ein Objekt}
+
+\fig{Struktur eines Besuchers}{./data/entwurfsmuster/variantenmuster/besucher_1.png}
+
+\fig{Beispiel eines Besuchers anhand eines Abstrakten Syntaxbaumes}{./data/entwurfsmuster/variantenmuster/besucher_example.png}
+
+\subsubsection{Kompositum}
+\definition[0]{Zweck}{Füge Objekte zu Baumstrukturen zusammen, um Bestands-Hierarchien zu repräsentieren. Ermöglicht es Klienten, sowohl einzelne Objekte als auch Aggregate einheitlich zu behandeln}

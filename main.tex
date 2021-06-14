@@ -16,7 +16,11 @@
 \usepackage{subfiles}
 \usepackage{mathrsfs}
 \usepackage{graphicx}
+
+\usepackage{imakeidx}
 \usepackage{hyperref}
+
+\makeindex[title=Definitionenübersicht, columns=2, intoc]
 %\usepackage{sourceserifpro}
 
 %\usepackage{wrapfig}
@@ -55,13 +59,15 @@
 \usepackage{caption}
 \newcommand{\fig}[2]{
     % \newline
-    \begin{minipage}{\linewidth}
-        \captionsetup{type=figure}
-        \begin{center}
-        \includegraphics[width=0.8\linewidth]{#2}
-        \captionof{figure}{#1}
-        \end{center}
-    \end{minipage}
+    %\hspace{\dimexpr-\fboxrule-\fboxsep\relax}\fbox{%
+        \begin{minipage}{\linewidth}
+            \captionsetup{type=figure}
+            \begin{center}
+            \includegraphics[width=0.8\linewidth]{#2}
+            \captionof{figure}{#1}
+            \end{center}
+        \end{minipage}
+    %}
 }
 
 %Kopf und Fußzeile
@@ -131,6 +137,8 @@
 \newcommand{\kapitel}[2]{Kapitel #1 - \textsc{#2}}
 
 
+
+
 % Farbdefinitionen
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
@@ -152,8 +160,14 @@
     #3
     \cbend
     \newline
-    \ifnum#1=1 \break\else\textsc{}\fi
-    %
+    \ifnum#1=1\break\else\textsc{}\fi
+    % Stichwortverzeichnis am Ende erzeugen.
+    \index{
+        \vspace{0.2cm}
+        \hspace*{-0.5cm}
+        \underline{\textsc{#2}}\\
+        #3
+    }
 }
 
 % Definitionen
@@ -254,6 +268,7 @@
 \newpage
 
 \subfile{UML}
+\subfile{UML-Diagramme}
 \newpage
 
 \subfile{ModularerEntwurf}
@@ -269,5 +284,7 @@
 \newpage
 
 
+\printindex
+\newpage
 \listoffigures
 \end{document}

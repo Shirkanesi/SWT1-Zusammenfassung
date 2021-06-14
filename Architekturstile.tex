@@ -25,3 +25,9 @@
 \definition[0]{Fließband}{}
 \definition[0]{Rahmenarchitektur}{}
 \definition[0]{Dienstorientierte Architektur}{}
+
+\subsection{Abstrakte/virtuelle Maschine}
+Die Benutztrelation zwischen mehreren abstrakten Maschinen ist hierarchisch, d.h. zyklenfrei.
+Eine abstrakte Maschine wird in der Regel von einem oder mehreren Modulen oder Paketen implementiert. Dabei werden die Softwarebefehle und -objekte von den Schnittstellen dieser Module bereitgestellt.
+Die darunter liegende Maschine muss ganz oder teilweise verdeckt werden, um Inkonsistenzen der beiden Maschinen zu vermeiden.
+Die Befehle der abstrakten Maschine sollen so gewählt werden, dass sie in einer Vielzahl von Programmen verwendet werden können.

@@ -4,6 +4,10 @@
 % Version, bitte bei jeder Veröffentlichung entsprechend inkrementieren.
 \newcommand{\version}{0.0.2}
 
+% \usepackage{fontspec}
+% \setmainfont{[MyFont.ttf]}
+% \setsansfont{[MyFont.ttf]} 
+
 % Sonderzeichen ermöglichen
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
@@ -155,6 +159,8 @@
 % Definitionen
 \newcommand{\definition}[3][1]{
     \noindent
+    % TODO: fix minipage-padding to next definition
+    \begin{minipage}{\linewidth}
     \faArchive$\:$
     \textbf{\textcolor{lightblue}{#2}}
     \cbstart
@@ -171,6 +177,7 @@
         \underline{\textsc{#2}}\\
         #3
     }
+    \end{minipage}
 }
 
 % Definitionen
@@ -241,7 +248,6 @@
 
 
 \begin{document}
-
 
 \maketitle
 

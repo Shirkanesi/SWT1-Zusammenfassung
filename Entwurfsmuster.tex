@@ -137,3 +137,113 @@ Anwendbarkeit:
     \item Wenn Bestands-Hierarchien von Objekten repräsentiert werden sollen.
     \item Wenn die Klienten in der Lage sein sollen, die Unterschiede zwischen zusammengesetzten und einzelnen Objekten zu ignorieren.
 \end{itemize}
+
+\subsubsection{Dekorierer}
+\definition[0]{Zweck}{Fügt einem Objekt dynamisch neue Funktionalität hinzu}
+
+\fig{Struktur des Dekorier-Modells}{./data/entwurfsmuster/variantenmuster/decorator.png}
+
+Für was der Dekorierer gut ist...
+\begin{itemize}
+    \item Objektfunktionalität hinzufügen, ohne Subjekt zu ändern
+    \item Kann Subjektschnittstelle erweitern
+\end{itemize}
+
+Und wo der Stellvertreter eingesetzt wird...
+\begin{itemize}
+    \item Zugriffssteuerung
+    \item Kann genauso wie ein Subjekt verwendet werden
+    \item Latenz und Methoden verstecken
+    \item Eigenes Objekt mit Subjekt im Hintergrund
+\end{itemize}
+
+
+\subsection{Zustandshandhabungsmuster}
+\subsubsection{Einzelstück}
+\definition[0]{Zweck}{Zusicherung, dass eine Klasse genau ein Exemplar besitzt und globalen Zugriffspunkt bereitstellen (getInstance())}
+
+\fig{Einzelstückmusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/singelton.png}
+
+Anwendbar, wenn...
+\begin{itemize}
+    \item es von einem Objekt nur eine Instanz geben darf und diese an einer bestimmten Stelle zugänglich gemacht werden soll
+    \item es schwierig oder unmöglich ist festzustellen, welcher Teil der Anwendung die erste Instanz erzeugt
+    \item die Instanz durch Unterklassenbildung erweiterbar sein soll und die Klienten ohne Veränderung ihres Quelltextes diese nutzen sollen
+\end{itemize}
+
+
+\subsubsection{Fliegengewicht (engl. flyweight)}
+\definition[0]{Zweck}{Nutze Objekte kleinster Granularität gemeinsam, um große Mengen von ihnen effizient speichern zu können}
+\fig{Fliegengewichtmusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/flyweight.png}
+Anwendbar, wenn
+\begin{itemize}
+    \item Speicherkosten hoch sind und große Mengen gespeichert werden
+    \item ein Großteil des Objektzustandes in den Kontext verlegt werden kann
+    \item die Anwendung nicht von der Identität des Objekts abhängt
+\end{itemize}
+
+
+
+\subsubsection{Memento (engl. memento)}
+\definition[0]{Memento}{Erfasst und \important{externalisiert} den \important{internen Zustand} eines Objekts, ohne seine Kapselung zu verletzzen, do dass das Objekt später in diesen Zustand zurückversetzt werden kann.}
+\fig{Mementomusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/memento.png}
+Anwendbar, wenn...
+\begin{itemize}
+    \item eine \important{Momentaufnahme} eines Teils des Zustands eines Objekts zwischengespeichertwerden muss, so dass es zu einem späteren Zeitpunkt in diesen Zustand zurückversetzt werden kann
+    \item eine direkte Schnittstelle zum Ermitteln des Zustands die Implementierungsdetails offenlegen und die Kapselung des Objekts aufbrechen würde
+\end{itemize}
+
+\subsubsection{Prototyp}
+\definition[0]{Zweck}{Bestimme die Art der zu erzeugenden Objekte anhand eines typischen Objekts und erstelle neue Objekte durch Kopieren dieses Prototyps}
+\fig{Prototypenmusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/prototype.png}
+Andwendbar, wenn
+\begin{itemize}
+    \item der Aufbau eines Objektes wesentlich mehr Zeit braucht als eine Kopie davon anzulegen
+    \item das System unabhängig von der Objekterzeugung, -represäntatition und -zusammensetzung sein soll
+    \item um Fabrikhierarchien parallel zur Klassenhierarchie der Produkte zu vermeiden
+    \item die Klassen der zu erstellenden Objekten erst zur Laufzeit feststehen
+\end{itemize}
+
+
+\subsubsection{Zustand}
+\definition[0]{Zustand (engl. state)}{Ändert das \important{Verhalten} des Objektes, wenn sich dessen interner Zustand ändert.}
+\fig{Mementomusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/zustand.png}
+Anwendbar, wenn
+\begin{itemize}
+    \item das Verhaltendes Objektes von dessen Zustand abhängt und das Objekt sein Verhalten während der Laufzeit, abhängig vom aktuellen Zustand, ändern muss
+\end{itemize}
+
+\subsection{Steuerungsmuster}
+\subsubsection{Befehl (engl. command)}
+\definition[0]{Command}{Kapselt einen Befehl als ein Objekt. Dies ermöglicht es, Klienten mit verschiedenen Anfragen zu parametrisieren, Operationen in eine Warteschlange zu stellen, ein Logbuch zu führen und Operationen rückgängig zu machen.}
+\fig{Steuerungsmusterstruktur}{./data/entwurfsmuster/steuerungsmuster/command.png}
+Anwendbar, wenn...
+\begin{itemize}
+    \item Objekte mit einer auszuführenden Aktion parametrisiertwerden sollen (wie bei den MenüEintrag-Objekten)
+    \item Anfragen zu unterschiedlichen Zeiten spezifiziert, aufgereiht und ausgeführt werden sollen
+    \item ein Rückgängigmachenvon Operation (Undo) unterstützt werden soll
+    \item das Mitprotokollierenvon Änderungen unterstützt werden soll (um System nach Absturz wiederherzustellen)
+    \item ein System mittels komplexer Operationen strukturiert werden soll, die aus primitiven Operationen aufgebaut werden (Makrobefehle)
+\end{itemize}
+
+\subsubsection{Auftraggeber/-nehmer (engl. master/worker)}
+\definition[0]{Auftraggeber/-nehmer}{bietet \important{fehlertolerante} und parallele Berechnung. Ein Auftraggeber verteilt die Arbeit an identische Arbeiter (Auftragnehmer) und berechnet das Endergebnis aus den Teilergebnissen, welche die Arbeiter zurückliefern}
+\fig{Auftraggeber/-nehmerstrukturmusterstruktur}{./data/entwurfsmuster/steuerungsmuster/masterslave.png}
+Anwendbar, wenn...
+\begin{itemize}
+    \item es mehrere Aufgaben gibt, die unabhängigvoneinander bearbeitet werden können.
+    \item mehrere Prozessorenzur parallelen Verarbeitung zur Verfügung stehen.
+    \item die Belastung der Arbeiter ausgeglichenwerden soll.
+\end{itemize}
+
+
+\subsection{Bequemlichkeitsmuster}
+\subsubsection{Bequemlichkeitsklasse}
+\definition[0]{Zweck}{Vereinfachen von Methodenaufrufe durch Bereithaltung der Parameter (Standardwerte) in einer speziellen Klasse. Also quasi Methoden überladen und dann Standardwerte für die fehlenden Parameter verwenden}.
+\fig{Bequemlichkeitsklassenmusterstruktur}{./data/entwurfsmuster/bequemlichkeitsmuster/bequemlichkeitsklasse.png}
+Anwendbar, wenn
+
+
+
+\subsubsection{Bequemlichkeitsmethode (engl. convenience method)}
+\definition[0]{Bequemlichkeitsmethode}{vereinfacht den Methodenaufruf durch die bereitstellung häufig genutzter Parameterkombinationen in zusätzlichen Methoden ($\Rightarrow$Überladen)}

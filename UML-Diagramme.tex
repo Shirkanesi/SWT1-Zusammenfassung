@@ -11,7 +11,8 @@
 
 \fig{Beispiel „Groupware-System“}{./data/Anwendungsfalldiagramm.png}
 
-\section{Aktivitätsdiagramm}
+\subsection{Aktivitätsdiagramm}
+Beschreibe parallele und sequenzielle Abläufe
 \begin{itemize}
     \item beschreibt einen Ablauf
     \item bestehen aus
@@ -26,7 +27,7 @@
 \fig{Semantisches Beispiel}{./data/uml/aktivität_beispiel.png}
 \fig{Synchronisieren}{./data/uml/aktivität_sync.png}
 
-\section{Interaktionsdiagramme}
+\subsection{Interaktionsdiagramme}
 
 \begin{itemize}
     \item Zeigen die für einen bestimmten Zweck notwendigen Interaktionen zwischen Objekten
@@ -65,6 +66,86 @@ break    & {[}bed{]}                              & Ist die Bed. wahr, dann wir 
 opt      & {[}bed{]}                              & Optionale Sequenz. Wird nur Ausgeführt, wenn Bed. wahr ist.                              \\
 par      &                                        & Enthaltene Teilsequenzen werden parallel ausgeführt.                                     \\
 loop     & {[}bed{]}                              & Solange die Bed. wahr ist, wird der Block ausgeführt.                                   
+\end{tabular}
+\caption{Operatoren zur Ablaufsteuerung}
+\label{tab:ablaufsteuerung}
+\end{table}
+\subsection{Zustandsdiagramm}
+Zustandsübergänge innerhalb eines einzelnen Objektes
+\begin{itemize}
+    \item Wird durch ein Ereignis ausgelöst
+    \item Übergang findet nur statt, wenn Übergangsereignis eintritt (guarded transition)
+    \item $\epsilon$-Übergang braucht kein Ereignis sondern kann jederzeit erfolgen, wenn
+    \begin{itemize}
+        \item Das System sich in dem Zustand befindet und
+        \item Die Bedingung erfüllt ist.
+    \end{itemize}
+    \item Spezielle Ereignisse
+    \begin{itemize}
+        \item at(ausdruck)
+        \begin{itemize}
+            \item Der Ausdruck beschreibt einen \babyblue{exakten absoluten Zeitpunkt}.
+            \item bspl: at(7:30) - um 7:30 Uhr (überhaupt \important{nicht} früh)
+        \end{itemize}
+        \item after(audruck)
+        \begin{itemize}
+            \item Hier muss der Ausdruck einen \babyblue{relativen Zeitpunkt} beschreiben
+            \item after(10min) - nach 10 min
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Aktionen}
+\begin{itemize}
+    \item Aktionen
+    \begin{itemize}
+        \item Mit einem Zustandsübergang kann eine Aktion verbunden sein.
+        \item \babyblue{Eintrittsaktion} (entry action): wird beim Übergang in den Zustand ausgeführt. \\
+        Schreibweise: entry / aktion()
+        \item \babyblue{Fortlaufende Aktion}(do action): wird solange ausgeführt, wie in dem Zustand verweilt wird. \\
+        Schreibweise: do / aktion()
+        \item \babyblue{Austrittsaktion}(exit action): wird beim Übergang aus dem Zustand in einen anderen ausgeführt. \\
+        Schreibweise: exiSt / aktion()
+    \end{itemize}
+    \item Eine Aktion wird sofort ausgeführt und benötigt keine (bzw. vernachlässigbare) Zeit
+\end{itemize}
+
+\subsubsection{Hierarchie}
+\fig{Hierarchischer Zustandsautomat}{./data/uml/ZustandHirar.png}
+
+\subsubsection{Nebenläuftigkeit}
+Während System im Zustand G verweilt, kann es alle Zustandskombinationen aus E×F annehmen
+\fig{Nebenläufige Automaten}{./data/uml/ZustandNebenlauf.png}
+
+\subsection{Paketdiagramm}
+\begin{itemize}
+    \item Pakete sind Ansammlungen von Modellelementen (ME) beliebigen Typs (z.B. Anwendungsfälle, Klassen, …)
+    \item Dient der Gliederung in überschaubare Einzeiten
+    \item Abhängigkeit zwischen Paketen werden mit einem gestrichelten Pfeil dargesetellt.
+\end{itemize}
+
+\subsubsection{Modellelement}
+\begin{itemize}
+    \item Besitzt innerhalb eines Pakets einen eindeutigen Namen
+    \item Kann mit Sichtbarkeit versehen werden
+    \item Kann in anderen Paketen über seinen qualifiziereten Namen zitiert werden (Paketname::ME-Name)
+\end{itemize}
+
+\fig{Paketdiagramm Beispiel}{./data/uml/paket_beispiel.png}
+
+\section{Syntaktische Analyse}
+\begin{table}[h]
+\begin{tabular}{l|l|l}
+Wortart            & Modellelement            & Beispiel                                 \\
+\hline
+Nomen              & Klasse                   & Auto, Hund                               \\
+Namen              & Exemplar                 & Julian, Niklas, Möwe                     \\
+Intransitives Verb & Methode                  & sitzen, atmen, laufen                    \\
+Transitives Verb   & Assoziation oder Methode & abhängig von ... etw. essen, jmd. lieben \\
+Verb "sein"        & Vererbung/Exemplar       & ist eine (Art von)...                    \\
+Verb "haben"       & Aggregation              & hat ein, besteht aus                     \\
+Modalverb          & Zusicherung              & müssen, sollen                           \\
+Adjektiv           & Attribut                 & 3 Jahre alt               
 \end{tabular}
 \caption{Operatoren zur Ablaufsteuerung}
 \label{tab:ablaufsteuerung}

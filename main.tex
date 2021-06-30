@@ -4,9 +4,9 @@
 % Version, bitte bei jeder Veröffentlichung entsprechend inkrementieren.
 \newcommand{\version}{0.0.2}
 
-% \usepackage{fontspec}
-% \setmainfont{[MyFont.ttf]}
-% \setsansfont{[MyFont.ttf]} 
+%\usepackage{fontspec}
+%\setmainfont{[MyFont.ttf]}
+%\setsansfont{[MyFont.ttf]} 
 
 % Sonderzeichen ermöglichen
 \usepackage[ngerman]{babel}
@@ -26,6 +26,8 @@
 
 \usepackage{graphicx}
 \usepackage{tabularx}
+
+\include{java}
 
 \makeindex[title=Definitionenübersicht, columns=2, intoc]
 %\usepackage{sourceserifpro}
@@ -290,6 +292,12 @@
 \newpage
 
 \subfile{Entwurfsphase}
+\newpage
+
+\subfile{Implementierungsphase}
+\newpage
+
+\subfile{Parallelitaet}
 \newpage
 
 

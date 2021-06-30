@@ -53,8 +53,8 @@ Beschreibe parallele und sequenzielle Abläufe
     \end{itemize}
 \end{itemize}
 
-\subsection{Aktivitätsdiagramm}
-\fig{Aktivitätsdiagramm: Beispiel}{./data/uml/sequenz.png}
+\subsection{Sequenzdiagramm}
+\fig{Sequenzdiagramm: Beispiel}{./data/uml/sequenz.png}
 
 
 \begin{table}[h]
@@ -150,3 +150,31 @@ Adjektiv           & Attribut                 & 3 Jahre alt
 \caption{Operatoren zur Ablaufsteuerung}
 \label{tab:ablaufsteuerung}
 \end{table}
+
+\subsubsection{Wann liegt (wahrscheinlich) keine Klasse vor}
+\begin{itemize}
+    \item Es lassen sich weder Attribute noch Operationen Identifizieren
+    \item Eine Klasse enthält die gleichen Attribute und Methoden wie eine andere.
+    \item Eine Klasse enthält nur Operationen, die sich anderen zuordnen lassen.
+    \item Eine Klasse modelliert Implementierungsdetails
+    \item Besitzt eine Klasse nur ein einziges oder wenige Attribute, so ist zu prüfen, ob diese Attribute nicht einer anderen Klasse zugeordnet werden könnten.
+\end{itemize}
+
+\subsection{Zulässige Kardinalitäten}
+\begin{itemize}
+    \item Muss-Beziehung
+    \begin{itemize}
+        \item Sobald das Objekt erzeugt ist, muss auch die Beziehung zu einem anderen Objekt aufgebaut werden.
+    \end{itemize}
+    \item Kann-Beziehung
+    \begin{itemize}
+        \item Die Beziehung kann zu einem beliebigen Zeitpunkt nach dem Erzeugen des Objekts aufgebaut werden.
+    \end{itemize}
+    \item Obergrenze fest oder variabel
+    \begin{itemize}
+        \item Ist eine Obergrenze von Problem her zwingend vorgegeben?
+        \item Im Zweifelsfall mit variablen Obergrenzen arbeiten.
+    \end{itemize}
+\end{itemize}´
+
+Mache eine Klasse B erst zur Unterklasse einer Klasse A, wenn gezeigt werden kann, dass jedes Exemplar von B auch als ein Exemplar von A gesehen werden kann.

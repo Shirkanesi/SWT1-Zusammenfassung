@@ -1,0 +1,80 @@
+\section{Implementierungsphase}
+\definition[0]{Implementierungsphase}{Programmierung, Dokumentierung und Testen der Systemkomponenten aufgrund vorgegebener Spezifikationen der Systemkomponenten}
+
+Voraussetzungen:
+\begin{itemize}
+    \item In der Entwurfsphase wurde eine Software-Architektur entworfen, die zu geeigneten Systemkomponenten geführt hat.
+    \item Abhängig von der Entwurfsmethode kann eine Systemkomponente folgendermaßen aussehen:
+    \begin{itemize}
+        \item Modularer Entwurf:
+        \begin{itemize}
+            \item funktionales Modul
+            \item Datenobjekt-Modul
+            \item Datentyp-Modul
+        \end{itemize}
+        \item Objektorientierter Entwurf:
+        \begin{itemize}
+            \item Schnittstelle, Klasse
+            \item Paket (Menge von interagierenden Klassen)
+        \end{itemize}
+    \end{itemize}
+    \item Für jede Systemkomponente existiert eine \important{Spezifikation}
+    \item Die Softwarearchitektur ist so ausgelegt, dass die Implementierungen umfangsmäßig pro Funktion, Zugriffsoperation bzw. Methoden wenige Seiten nicht überschreiten.
+\end{itemize}   
+
+\subsection{Einführung und Überblick}
+\begin{itemize}
+    \item Aktivitäten
+    \begin{itemize}
+        \item Konzeption von Datenstrukturen und Algorithmen
+        \item Strukturierung des Programms durch geeignete Verfeinerungsebenen
+        \item Dokumentation der Problemlösung und der Implementierungsentscheidungen
+        \item Umsetzung der Konzepte in die Konstrukte der verwendeten Programmiersprache
+    \end{itemize}
+    \item Angaben zur Zeit- und Speicherkomplexität
+    \item evtl. Programmoptimierungen
+    \item Test oder Verifikation des Programms einschl. Testplanung und Testfallerstellung
+    \item Auch Programmieren im Kleinen genannt
+    \item Alle Teilprodukte aller Systemkomponenten müssen später integriert und einen Systemtest unterzogen werden.
+    \item Teilprodukte
+    \begin{itemize}
+        \item Quellprogramm einschl. integrierter Dokumentation
+        \item Objektprogramm
+        \item ausführbare Testfälle (zusammengefasst in Testsuiten) und Testprotokoll bzw. Verfikationsdokumentation.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Abbildung und Implementierung von Zustandsautomaten}
+\subsubsection{Speicherung des Zustands eines Objektes}
+\begin{itemize}
+    \item \babyblue{Implizite} Speicherung
+    \begin{itemize}
+        \item Der Zustand des Objektes kann aus den Attributwerten eines Exemplars „berechnet“ werden
+        \item Keine dedizierten Instanzvariablen nötig, der Zustand muss aber jedes Mal neu berechnet werden
+        \item Zustandsübergangsfunktion ist implizit
+    \end{itemize}
+    \item \babyblue{Explizite} Speicherung
+    \begin{itemize}
+        \item Der Zustand eines Objektes wird in dedizierten Instanzvariablen gespeichert und kann daher einfach gelesen und neu gesetzt werden
+        \item Die Zustandsübergangsfunktion muss ebenfalls explizit angegeben werden
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Ausgelagerte explizite Speicherung (engl. state pattern)}
+\begin{itemize}
+    \item Idee:
+    \begin{itemize}
+        \item Das eigentliche Objekt weiß nicht was genau in welchem Zustand zu tun ist.
+        \item Es kennt nur seinen Zustand
+        \item Und delegiert das, was zu tun ist, wenn eine Botschaft eintrifft, an den jeweiligen Zustand.
+    \end{itemize}
+    \item Vorteil:
+    \begin{itemize}
+        \item Die Kontextsensitivität (= Zustandsabhängigkeit) der Methoden braucht nicht mehr explizit verwaltet zu werden, statt dessen wird dynamische Polymorphie verwendet
+        \item Die Implementierungsarbeit wird auf verschiedene Klassen (= verschiedene Dateien in Java) aufgeteilt
+        \begin{itemize}
+            \item Bessere Parallelisierbarkeit der Implementierungsarbeit
+            \item \glqq separation of concerns\grqq
+        \end{itemize}
+    \end{itemize}
+\end{itemize}

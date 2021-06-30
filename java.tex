@@ -1,0 +1,47 @@
+\definecolor{javaKeyword}{RGB}{171, 35, 27}
+\definecolor{javaComment}{RGB}{133, 133, 133}
+
+\newcommand{\javaKeyword}[1]{\texttt{\textbf{\textcolor{javaKeyword}{#1\hphantom{.}}}}}
+
+\newcommand{\javaIf}    {\javaKeyword{if}}
+\newcommand{\javaElse}  {\javaKeyword{else}}
+\newcommand{\javaFor}   {\javaKeyword{for}}
+\newcommand{\javaWhile} {\javaKeyword{while}}
+\newcommand{\javaDo}    {\javaKeyword{do}}
+\newcommand{\javaNew}   {\javaKeyword{new}}
+\newcommand{\javaThrow} {\javaKeyword{throw}}
+\newcommand{\javaThrows}{\javaKeyword{throws}}
+\newcommand{\javaClass} {\javaKeyword{class}}
+\newcommand{\javaVoid}  {\javaKeyword{void}}
+\newcommand{\javaInt}   {\javaKeyword{int}}
+\newcommand{\javaLong}  {\javaKeyword{long}}
+\newcommand{\javaByte}  {\javaKeyword{byte}}
+\newcommand{\javaShort} {\javaKeyword{short}}
+\newcommand{\javaChar}  {\javaKeyword{char}}
+\newcommand{\javaFloat} {\javaKeyword{float}}
+\newcommand{\javaDouble}{\javaKeyword{double}}
+\newcommand{\javaVar}   {\javaKeyword{var}}
+\newcommand{\javaInstanceof}    {\javaKeyword{instanceof}}
+\newcommand{\javaPublic}        {\javaKeyword{public}}
+\newcommand{\javaPrivate}       {\javaKeyword{private}}
+\newcommand{\javaProtected}     {\javaKeyword{protected}}
+\newcommand{\javaStatic}        {\javaKeyword{static}}
+
+% New ones, TODO: add them to J2L
+\newcommand{\javaTry}{\javaKeyword{try}}
+\newcommand{\javaCatch}{\javaKeyword{catch}}
+\newcommand{\javaSwitch}{\javaKeyword{switch}}
+\newcommand{\javaCase}{\javaKeyword{case}}
+\newcommand{\javaBreak}{\javaKeyword{break}}
+\newcommand{\javaReturn}{\javaKeyword{return}}
+
+\newcommand{\javaDoc}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\javaComment}[1]{\textcolor{javaComment}{#1}}
+\newcommand{\javaDocAuthor}{\textbf{@author \hphantom{.}}}
+\newcommand{\javaDocVersion}{\textbf{@version \hphantom{.}}}
+\newcommand{\javaDocSee}{\textbf{@see \hphantom{.}}}
+\newcommand{\javaDocParam}{\textbf{@param \hphantom{.}}}
+
+
+\newcommand{\codemarkup}[1]{\texttt{#1}}
+\newenvironment{code}{\ttfamily}{}

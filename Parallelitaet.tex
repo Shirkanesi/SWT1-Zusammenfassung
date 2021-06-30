@@ -1,0 +1,137 @@
+\section{Parallelität}
+\subsection{Die Mooresche Regel (Moore's Law)}
+\begin{itemize}
+    \item Moore, G.E.:
+    “The complexity for minimum component costs has increased at a rate of roughly a factor of two per year.” (1965)
+    \item Moore, G.E.:
+    “The new slope might approximate a doubling every two years, rather than every year, by the end of the decade.” (1975)
+\end{itemize}
+\fig{Moore's Law}{./data/moore}
+
+
+\definition[0]{parallel / nebeläufig}{gleichzeitig ablaufend, simultan}
+In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behandelt.
+
+\subsubsection{Prozess (engl. Process)}
+\begin{itemize}
+    \item Wird durch \babyblue{Betriebssystem} erzeugt
+    \item Enthält Informationen über Programmressourcen und Ausführungszeiten, z.B. 
+    \begin{itemize}
+        \item Code-Segment (Programminstruktionen)
+        \item Daten-Segment (für globale Variablen, Keller, Halden)
+        \item Mind. 1 Kontrollfaden
+    \end{itemize}
+    \item CPU-Kontextwechsel zwischen Prozessen langsam
+\end{itemize}Enth
+
+\subsubsection{Kontrollfaden}
+\begin{itemize}
+    \item Instuktionsfolge, die ausgeführt wird
+    \item Existiert in einem Prozess
+    \item Ein Faden hat eigenen 
+    \begin{itemize}
+        \item Befehlszeiger
+        \item Keller
+        \item Register
+    \end{itemize}
+    \item Teilt sich mit anderen Fäden des gleichen Prozesses
+    \begin{itemize}
+        \item Adressraum
+        \item Code/Daten-Segmente
+        \item Andere Ressourcen (z.B. geöffnete Dateien, Sperren, etc.)
+    \end{itemize}
+    \item CPU-Kontextwechsel zw. Fäden des gleichen Prozesses schneller als zw. unterschiedlichen Prozessen.
+\end{itemize}
+
+\fig{Prozesse und Kontrollfäden}{./data/processthread}
+
+
+\section{Parallelität in Java}
+    \begin{code}
+        \javaPublic \javaKeyword{interface}Runnable \{\\
+        \null\quad\javaPublic abstract \javaVoid run();\\
+        \}\\
+    \end{code}
+    \begin{code}
+        \javaPublic \javaClass Thread \javaKeyword{implements}Runnable \{\\
+        \null\quad\javaPublic Thread(String name);\\
+        \null\quad\javaPublic Thread(Runnable target)\\
+        \null\quad\javaPublic \javaVoid start();\\
+        \null\quad\javaPublic \javaVoid run();\\
+        \null\quad\dots\\
+        \}\\
+    \end{code}
+    \important{Threads immer mit \texttt{.start()} starten, nicht \texttt{.run()}!}
+
+\subsubsection{Runnable vs. Thread}
+\begin{itemize}
+    \item Die Kapselung der Aufgabe in eine \important{Runnable} erzeugt weniger Overhead
+    \item Im Gegensatz zu Thread ist Runnable serialisierbar $\Rightarrow$ kann über das Netzwerk versendet werden.
+\end{itemize}
+
+\subsubsection{Koordination}
+\begin{itemize}
+    \item \babyblue{Wechselseitiger} Ausschluss
+    \begin{itemize}
+        \item Markierung kritischer Abschnitte, die nur von einer Aktivität gleichzeitig betreten werden dürfen
+        \item \javaKeyword{synchronized}
+    \end{itemize}
+    \item Warten auf \glqq\babyblue{Ereignisse}\grqq\ und Benachrichtigung
+    \begin{itemize}
+        \item Aktivitäten können auf Zustandsänderungen warten, die durch andere verursacht werden.
+        \item Aktivitäten informieren andere, wartende Aktivitäten über Signale
+        \item \texttt{Thread\#wait()} | \texttt{Thread\#notify()} | \texttt{Thread\#notifyAll()}
+    \end{itemize}
+    \item \babyblue{Unterbrechungen}
+    \begin{itemize}
+        \item Eine Aktivität, die auf ein nicht (mehr) eintretendes Erergnis wartet, kann über eine Ausnahmebedingung abgebrochen werden.
+        \item \texttt{Thread\#interrupt()}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Kritische Abschnitte}
+\begin{itemize}
+    \item Ein Bereich, in dem gleichzeitige Zugriffe auf gemeinsam genutzte Daten stattfinden, ist ein \babyblue{kritischer Abschnitt}
+    \item Um \babyblue{Wettlaufsitutationen} zu vermeiden, müssen solche kritischen Abschnitte geschützt werden.
+    \begin{itemize}
+        \item Nur \babyblue{eine} Aktivität darf einen kritischen Abschnitt \babyblue{gleichzeitig} bearbeiten.
+        \item \babyblue{Vor dem Betreten} eines kritischen ABschnitts muss sichergestellt sein, dass ihn keine andere aktivität ausführt.
+    \end{itemize}
+    \item \babyblue{Atomarität}: Java garantiert, das Zugriffe auf einzelne Variablen immer atomar erfolgen.
+    \begin{itemize}
+        \item Ausgenommen sind 64 Bit variablen
+        \item \javaKeyword{double} \javaKeyword{long}
+    \end{itemize}
+    \item Zugriffe auf mehrere Variablen, oder aufeinanderfolgende Lese- und Schreiboperationen werden nicht atomar ausgeführt.
+    \begin{itemize}
+        \item Vorsicht auch bei \javaKeyword{i++} sieht atomar, ist es aber nicht.
+        \item Besteht aus lesen, bearbeiten und schreiben
+    \end{itemize}
+    \item Auch wenn Zugriff atomar erfolgt, ist dennoch eine Synchronisation erforderlich und im Cache zwischengespeicherte Daten sicher abzugleichen.
+\end{itemize}
+
+\fig{Waiting-Area und Monitor}{./data/parallel/monitor_wait}
+
+\subsubsection{Semaphoren}
+\begin{itemize}
+    \item Wird mit einer Anzahl von \glqq Genehmigungen\grqq initialisiert
+    \item acquire blockiert, bis eine \glqq Genehmigung\grqq verfügbar ist und erniedrigt anschließend Anzahl der \glqq Genehmigungen\grqq um 1
+    \item release erhöht Anzahl der \glqq Genehmigungen\grqq um 1
+\end{itemize}
+\null
+\begin{code}
+    \javaPublic \javaClass Semaphore \{\\
+        \null\quad\javaPrivate \javaInt count;\\\null\\
+        \null\quad    \javaPublic \javaKeyword{synchronized} \javaVoid aquire()  \javaThrows InterruptedException \{\\
+        \null\quad\quad        \javaWhile (count <= 0) \{ wait(); \}\\
+        \null\quad\quad\quad            -\null-count;\\
+        \null\quad    \}\\
+        \null\quad\javaPublic \javaKeyword{synchronized} \javaVoid release() \{\\
+        \null\quad\quad            ++count;\\
+        \null\quad\quad            notifyAll();\\
+        \null\quad        \}\\
+        \null\quad        \javaPublic Semaphore (\javaInt capacity) \{\\
+        \null\quad\quad            count = capacity;\\
+        \null\quad        \}\\
+    \}
+\end{code}

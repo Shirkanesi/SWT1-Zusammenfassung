@@ -1,6 +1,55 @@
 \section{Entwurfsmuster}
 \definition[0]{Software-Entwurfsmuster}{Ein Software-Entwurfsmuster beschreibt eine Familie von \important{Lösungen} für ein Software-\important{Entwurfsproblem}.}
 \anmerkung[0]{}{Der Zweck von Entwurfsmustern ist die Wiederverwendung von Entwurfswissen.}
+\\
+Sie dienen außerdem:
+\begin{itemize}
+    \item die Kommunikation im Team zu verbessern, da sie eine nützliche Terminologie bieten
+    \item der Verständlichkeit indem sie helfen Entwürfe zu verstehen, sie kurz und knapp zu dokumentieren und Architektur-Drift verhindern
+    \item dem Flexen mit Entwurfswissen
+\end{itemize}
+
+\subsection{Schnelle Übersicht}
+\subsubsection{Entkopplungsmuster}
+\begin{itemize}
+    \item Adapter
+    \item Beobachter
+    \item Brücke
+    \item Iterator
+    \item Stellvertreter
+    \item Vermittler
+\end{itemize}
+\subsubsection{Variantenmuster}
+\begin{itemize}
+    \item Abstrakte Fabrik
+    \item Besucher
+    \item Fabrikmethode
+    \item Kompositum
+    \item Schablonenmethode
+    \item Strategie
+    \item Dekorierer
+\end{itemize}
+\subsubsection{Zustandshandhabungsmuster}
+\begin{itemize}
+    \item Einzelstück
+    \item Fliegengewicht
+    \item Memento
+    \item Prototyp
+    \item Zustand
+\end{itemize}
+\subsubsection{Steuerungsmuster}
+\begin{itemize}
+    \item Befehl
+    \item Master/Slave; Maste/Worker
+\end{itemize}
+\subsubsection{Virtuelle Maschinen}
+\subsubsection{Bequemlichkeitsmuster}
+\begin{itemize}
+    \item Bequemlichkeitsklasse
+    \item Bequemlichkeitsmethode
+    \item Fassade
+    \item Null-Objekt
+\end{itemize}
 
 \subsection{Entkopplungsmuster}
 \definition[1]{Entkopplungs-Muster}{Entkopplungsmuster teilen ein System in mehrere Einheiten, so dass einzelne Einheiten unabhängig voneinander erstellt, verändert, ausgetauscht und wiederverwendet werden können. Der Vorteil von Entkopplungsmustern ist, dass ein System durch lokale Änderungen verbessert, angepasst und erweitert werden kann, ohne das ganze System zu modifizieren.}
@@ -242,8 +291,38 @@ Anwendbar, wenn...
 \definition[0]{Zweck}{Vereinfachen von Methodenaufrufe durch Bereithaltung der Parameter (Standardwerte) in einer speziellen Klasse. Also quasi Methoden überladen und dann Standardwerte für die fehlenden Parameter verwenden}.
 \fig{Bequemlichkeitsklassenmusterstruktur}{./data/entwurfsmuster/bequemlichkeitsmuster/bequemlichkeitsklasse.png}
 Anwendbar, wenn
-
+\begin{itemize}
+    \item Methodenaufrufe vereinfacht werden sollen, in dem häufig gleich verwendete Parameter mit Standardwerten versehen werden können
+\end{itemize}
 
 
 \subsubsection{Bequemlichkeitsmethode (engl. convenience method)}
-\definition[0]{Bequemlichkeitsmethode}{vereinfacht den Methodenaufruf durch die bereitstellung häufig genutzter Parameterkombinationen in zusätzlichen Methoden ($\Rightarrow$Überladen)}
+\definition[0]{Bequemlichkeitsmethode}{vereinfacht den Methodenaufruf durch die bereitstellung häufig genutzter Parameterkombinationen in zusätzlichen Methoden ($\Rightarrow$Überladen), basically fast das gleiche wie Bequemlichkeitsklasse.}
+\fig{Bequemlichkeitsmethodenmusterstruktur}{./data/entwurfsmuster/bequemlichkeitsmuster/bequemlichkeitsmethode.png}
+Anwendbar, wenn Methodenaufrufe häufig mit den gleichen Parametern auftreten.
+
+
+\subsubsection{Fassade}
+\definition[0]{Zweck}{Einheitliche Schnittstelle zu einer Menge von Schnittstellen bieten}
+\fig{Fassadenmusterstruktur}{./data/entwurfsmuster/bequemlichkeitsmuster/fassade.png}
+Anwendbar, wenn
+\begin{itemize}
+    \item eine einfache Schnittstelle zu einem komplexen Subsystem angeboten werden soll
+    \item es viele Abhängigkeiten zwischen Klient und Implementierung einer Abstraktion gibt. Die Fassade entkoppelt die Subsysteme von Klienten und anderen Subsystemen
+\end{itemize}
+
+
+
+\subsubsection{Null-Objekt}
+\definition[0]{Null-Objekt}{stellt einen \important{Stellvertreter} zur Verfügung, der die gleiche Schnittstelle bietet, aber nichts tut. Das Null-Objekt kapselt die Implementierungsentscheidung (wie genau es \anfuehrung{nichts tut}) und versteckt diese Details vor seinen Mitarbeitern.}
+Zeilen wie:\\
+\texttt{\textcolor{purple}{if} (\textcolor{ForestGreen}{thisCall}.\textcolor{blue}{callingParty} != \textcolor{purple}{null}) \textcolor{ForestGreen}{thisCall}.\textcolor{blue}{callingParty}.action();}\\
+werden somit vermieden.\\
+\fig{Struktur eines Nullobjekts}{./data/entwurfsmuster/bequemlichkeitsmuster/nullobjekt.png}
+
+Anwendbar, wenn...
+\begin{itemize}
+    \item ein Objekt Mitarbeiter benötigt und einer oder mehrere von ihnen nichts tun sollen
+    \item Klienten sich nicht um den Unterschied zwischen einem echten Mitarbeiter und einem der nichts tut kümmern sollen
+    \item das „tue nichts“-Verhalten von verschiedenen Klienten wiederverwendet werden soll
+\end{itemize}

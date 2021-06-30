@@ -4,15 +4,15 @@
     \item Welche Komponenten existieren bereits und können wiederverwendet/gekauft werden, oder sind frei erhältlich?
     \item Liegen Echtzeitbedingungen vor? Wie werden diese Eingehalten?
     \item Wie werden die Daten gespeichert?
-    \item Wie wird die Ablaufsteuerung realisiert (Monolithis (über Aufrufe), Ereignisgetrieben, Parallel)?
-    \item Wie wird das System installiert, gestarten und gestoppt?
+    \item Wie wird die Ablaufsteuerung realisiert (Monolithisch (über Aufrufe), Ereignisgetrieben, Parallel)?
+    \item Wie wird das System installiert, gestartet und gestoppt?
     \item Wie werden Fehler behandelt?
     \item Wie werden Rechte vergeben?
 \end{itemize}
 
 \subsection{Typische Entwurfs-Abwägungen}
 \begin{itemize}
-    \item Es kann nur eine Gruppe, der nichtfunktionalen Anforderungen gleichzeitig erfüllt werden. 2 bleiben auf der Strecke.
+    \item Es kann nur eine Gruppe, der nicht-funktionale Anforderungen gleichzeitig erfüllt werden, 2 bleiben auf der Strecke.
     \begin{itemize}
         \item Auftraggeber befriedigt, dafür aber Endbenutzer und Entwickler unzufrieden. (Billig)
         \item Endbenutzer zufrieden, dafür Entwickler und Auftraggeber unzufrieden. (Funktional)
@@ -20,7 +20,7 @@
     \end{itemize}
     \item Ansonsten muss abgewogen werden
     \begin{itemize}
-        \item Laufzeit vs. Platbedarf.
+        \item Laufzeit vs. Platzbedarf.
         \item Laufzeit vs. Partabilität
         \item Entwicklungszeit vs. Robustheit, Zuverlässigkeit
         \item Entwicklungszeit vs. Funktionalität
@@ -29,4 +29,3 @@
         \item \babyblue{\anfuehrung{Good, fast, cheap. Pick any two.}}
     \end{itemize}
 \end{itemize}
-

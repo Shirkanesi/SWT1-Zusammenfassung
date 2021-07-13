@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 
 % Version, bitte bei jeder Veröffentlichung entsprechend inkrementieren.
-\newcommand{\version}{0.0.2}
+\newcommand{\version}{0.2.1}
 
 %\usepackage{fontspec}
 %\setmainfont{[MyFont.ttf]}
@@ -20,16 +20,16 @@
 \usepackage{subfiles}
 \usepackage{mathrsfs}
 \usepackage{graphicx}
-
+%
 \usepackage{imakeidx}
 \usepackage{hyperref}
-
+%
 \usepackage{graphicx}
 \usepackage{tabularx}
 
 \include{java}
 
-\makeindex[title=Definitionenübersicht, columns=2, intoc]
+\makeindex[title=Definitionsübersicht, columns=2, intoc]
 %\usepackage{sourceserifpro}
 
 %\usepackage{wrapfig}
@@ -52,9 +52,9 @@
 
 % Author-Information
 %\newcommand{\ushortWithMail}[1]{\href{mailto:#1@student.kit.edu}{#1}}
-\newcommand{\ourMails}[1]{\href{mailto:uwgmn@student.kit.edu;ujict@student.kit.edu;uzytw@student.kit.edu;udlzq@student.kit.edu;uzytw@student.kit.edu;uiynn@student.kit.edu?subject=SWT-Zusammenfassung}{#1}}
-\newcommand{\ushort}{\ourMails{uwgmn, ujict, uzytw, udlzq, uiynn}}
-\newcommand{\myName}{Julian Keck, Julian Leitner, Christian Schliz, Niklas, Möwe}
+\newcommand{\ourMails}[1]{\href{mailto:uwgmn@student.kit.edu;ujict@student.kit.edu;uzytw@student.kit.edu;udlzq@student.kit.edu;uiynn@student.kit.edu?subject=SWT-Zusammenfassung}{#1}}
+\newcommand{\ushort}{\ourMails{uwgmn, ujict, uzytw, udlzq}}
+\newcommand{\myName}{Julian Keck, Julian Leitner, Christian Schliz, Niklas Seng}
 \newcommand{\myEmail}{\ushort@student.kit.edu}
 \newcommand{\creationYear}{2021}
 
@@ -141,7 +141,11 @@
 \newcommand{\vectors}[1]{#1_1, \dots, #1_n}
 
 
-\newcommand{\todo}{\strong{TODO: }}
+%\newcommand{\todo}{\strong{TODO: }}
+\newcommand{\todo}[1]{
+    \PackageWarning{TODO}{#1}
+    %\textbf{\textsc{\textcolor{red}{TODO: #1}}}
+}
 
 \newcommand{\kapitel}[2]{Kapitel #1 - \textsc{#2}}
 
@@ -159,6 +163,7 @@
 \newcommand{\important}[1]{\textcolor{importantColor}{#1}}
 
 % Definitionen
+%\newcommand{\definition}[3][1]{}
 \newcommand{\definition}[3][1]{
     \noindent
     % TODO: fix minipage-padding to next definition
@@ -241,7 +246,7 @@
 
 
 
-\title{SWT-1 - Modulzusammenfassung SS2021\\[\subtitlelinesep]%
+\title{SWT1 – Inoffizielles Modulskript im SS 2021\\[\subtitlelinesep]%
     \smaller[\subtitlerelsize]{}Version \version}
 \author{\ushort\\\myName}
 
@@ -250,7 +255,6 @@
 
 
 \begin{document}
-
 \maketitle
 
 % \href{https://www.youtube.com/watch?v=q7oVvnlR0oQ}{\includegraphics[width=\textwidth]{spaltendermatrix}}
@@ -259,49 +263,54 @@
 \tableofcontents
 \newpage
 
-\subfile{LayoutCommands}
+% Excluded in final pdf render
+% \subfile{LayoutCommands}
+% \newpage
+% \section{Vorbemerkungen}
+
+\subfile{01_Begriffsdefinitionen}   % Begriffsdefinitionen
 \newpage
 
-\section{Vorbemerkungen}
-
-
-
-\subfile{Begriffsdefinitionen}   % Begriffsdefinitionen
+\subfile{02_Software}
 \newpage
 
-\subfile{Software}
+\subfile{03_Werkzeugkette}
 \newpage
 
-\subfile{Werkzeugkette}
+\subfile{04_Planungsphase}
 \newpage
 
-\subfile{Planungsphase}
+\subfile{05_Definitionsphase}
 \newpage
 
-\subfile{UML}
-\subfile{UML-Diagramme}
+\subfile{06_UML}
+\subfile{07_UML-Diagramme}
 \newpage
 
-\subfile{ModularerEntwurf}
+\subfile{09_Modularer_OO_Entwurf}
 \newpage
 
-\subfile{Architekturstile}
+\subfile{11_Entwurfsphase}
 \newpage
 
-\subfile{Entwurfsmuster}
+\subfile{12_Architekturstile}
 \newpage
 
-\subfile{Entwurfsphase}
+\subfile{13_Entwurfsmuster}
 \newpage
 
-\subfile{Implementierungsphase}
+\subfile{14_Implementierungsphase}
 \newpage
 
-\subfile{Parallelitaet}
+\subfile{15_Parallelitaet}
 \newpage
 
+\subfile{17_Testphase}
+\newpage
 
-\printindex
+\subfile{18_AbnahmeWartungPflege}
+\newpage
+
 \newpage
 \listoffigures
 \end{document}

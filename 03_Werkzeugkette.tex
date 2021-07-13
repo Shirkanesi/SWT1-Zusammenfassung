@@ -1,0 +1,82 @@
+\section{Werkzeugkette}
+% def. software konfig verwaltung
+\definition[1]{Softwarekonfigurationsverwaltung}{ (engl. software configuration management) ist die Disziplin zur Verfolgung und Steuerung der Evolution von Software}
+% def. software konfig
+\definition[1]{(Software-) Konfiguration}{ist eine \babyblue{eindeutig bekannte} Menge von \babyblue{Software-Elementen}, mit den jeweils gültigen \babyblue{Versionsangaben}, die zu einem bestimmten Zeitpunkt im Produktlebenszyklus in ihrer Wirkungsweise und ihren Schnittstellen aufeinander abgestimmt sind und gemeinsam eine vorgesehene Aufgabe erfüllen sollen. }
+% def. software element
+\definition[0]{Software-Element}{ist jeder identifizierbare Bestandteil eines Produktes oder einer Produktlinie. Ein Software-Element kann eine einzelne Datei sein, oder auch eine Konfiguration.}
+
+\subsection{Software-Element}
+\begin{itemize}
+    \item Besitzt systemweit eindeutigen \babyblue{Bezeichner}
+    \item Änderung am Element erzeugt neuen Bezeichner, um Fehleridentifikation zu vermeiden
+    \item Unterschiede \begin{itemize}
+        \item Quellelement: manuell erzeugt, z.B. mit Editor
+        \item Abgeleitetes Element: automatisch generiert, z.B. durch Übersetzer
+    \end{itemize}
+\end{itemize}
+
+\subsection{Versionen}
+\begin{itemize}
+    \item Eine \babyblue{Version} ist die Ausprägung eines Software-Elementes zu einem bestimmten Zeitpunkt.
+    \item \babyblue{Revisionen} sind zeitlich nacheinander liegende Versionen (Entwicklungsstände)
+    \item \babyblue{Varianten} sind alternative Versionen
+\end{itemize}
+
+\subsection{Ein-/Ausbuchen}
+\definition[0]{Depot}{Ein \babyblue{Depot} (engl. Repository) ist ein verwaltetes Verzeichnis zur Speicherung und Beschreibung digitaler Objekte für ein digitales Archiv. Software-Elemente werden in \babyblue{Depots} gespeichert.}
+
+\subsubsection{Ausbuchen}
+\begin{itemize}
+    \item Holt Kopie aus Depot
+    \item Reserviert Kopie für Ausbucher
+    \item Kopie darf geändert und wieder \babyblue{Eingebucht} werden.
+\end{itemize}
+\subsubsection{Einbuchen}
+\begin{itemize}
+    \item Schiebt Kopie in Depot zurück
+    \item Löscht Reservierung
+    \item Speichert Autor, Einbuchungszeit und \babyblue{Logbucheintrag}
+    \item Eingebuchtes Element ist nicht mehr änderbar. Erst nach erneuter Ausbuchung.
+\end{itemize}
+
+\subsubsection{Optimistisches Ausbuchen}
+\begin{itemize}
+    \item Keine \babyblue{Ausbuchung} vorher nötig. Man kann einfach bearbeiten.
+    \item Vorteile: \begin{itemize}
+        \item Mehrere Entwickler können gleichzeitig am gleichen Element arbeiten.
+        \item Ein Einzelner kann nicht die Arbeit behindern.
+    \end{itemize}
+    \item Nachteile \begin{itemize}
+        \item Es können gleichzeitig Änderungen an der Selben Datei vorgenommen werden.
+        \item Aufwand beim zusammenführen (\babyblue{Merge-Konflikte})
+    \end{itemize}
+\end{itemize}
+
+\subsection{GIT}
+\begin{itemize}
+    \item git add: working directory $\rightarrow$ staging area
+    \item git commit: staging area $\rightarrow$ local repo
+    \item git push: local repo $\rightarrow$ remote repo
+    \item git fetch: remote repo $\rightarrow$ local repo
+    \item git checkout: local repo $\rightarrow$ working directory
+    \item git merge: local repo $\rightarrow$ working directory
+    \item git cherry-pick A\textasciicircum ..B: Kopiert Einbuchungen A bis B hinter den aktuellen Kopfzeiger (Head)
+\end{itemize}
+
+% Bild 1
+\fig{Lebenszyklus einer Datei in Git}{./data/git_lebenszyklus}
+% Bild 2
+\fig{Remote-Repository \& Local-Respoitory}{./data/git_remote_local}
+
+
+\definition[0]{Kopfzeiger}{Der Kopfzeiger (engl. HEAD-Pointer) zeigt auf aktuellen Zustand des Arbeitsordners in der Versionshistorie.}
+
+\subsection{SVN vs Git}
+\begin{itemize}
+    \item SVN-Depot liegt grundsätzlich entfernt (remote repo), Git wird mit lokalem Depot initialisiert (remote repos aber möglich)
+    \item SNV verwendet fortlaufende Nummern zur Identifikation von Commits, Git verwendet Hashes
+    \item SVN speichert mit Deltas, Git Snappschüsse
+\end{itemize}
+
+\textit{Siehe: Werkzeugkette Seite 53}

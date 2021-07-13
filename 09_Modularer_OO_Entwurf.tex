@@ -1,16 +1,18 @@
 \section{Modularer Entwurf}
-\definition{Modul}{Ein Modul ist eine Menge von Programmelementen, die nach dem Geheimnisprinzip gemeinsam entworfen und geändert werden.}
+\definition[0]{Modul}{Ein Modul ist eine Menge von Programmelementen, die nach dem Geheimnisprinzip gemeinsam entworfen und geändert werden.}
 
-\definition[1]{Geheimnisprinzip / Kapselungsprinzip}{Jedes Modul verbirgt eine wichtige Entwurfsentscheidung hinter einer wohldefinierten Schnittstelle, die sich bei einer Änderung der Entscheidung nicht mit ändert}
+\definition[0]{Geheimnisprinzip / Kapselungsprinzip}{Jedes Modul verbirgt eine wichtige Entwurfsentscheidung hinter einer wohldefinierten Schnittstelle, die sich bei einer Änderung der Entscheidung nicht mit ändert}
 
-\definition[1]{Benutztrelation}{Programmkomponente A benutzt Programmkomponente B $\Leftrightarrow$ A benötigt für den korrekten Ablauf die korrekte Implementierung von B}
+\definition[0]{Benutztrelation}{Programmkomponente A benutzt Programmkomponente B $\Leftrightarrow$ A benötigt für den korrekten Ablauf die korrekte Implementierung von B}
 
 \definition[0]{Benutzhierarchie}{Eine zyklenfreie Benutzrelation}
 
-\definition{Programmfamilie / Softwareproduktlinie}{ist eine Menge von Programmen, die erhebliche Anteile von Anforderungen, Entwurfsbestandteilen oder Softwarekomponenten gemeinsam haben.}
+\definition[0]{Programmfamilie / Softwareproduktlinie}{eine Menge von Programmen, die erhebliche Anteile von Anforderungen, Entwurfsbestandteilen oder Softwarekomponenten gemeinsam haben.}
 
 \definition[0]{Schichtenarchitektur}{ist die Gliederung einer Softwarearchitektur  in hierarchisch geordnete Schichten. Zwischen den einzelnen Schichten ist die Benutztrelation linear, baumartig, oder ein azyklischer Graph. Innerhalb einer Schicht ist die Benutztrelation beliebig.}
-\definition{Schicht}{besteht aus einer Menge von Softwarekomponenten (Module, Klassen, Objekte, Pakete) mit einer wohldefinierten Schnittstelle, nutzt die darunter liegenden Schichten und stellt seine Dienste darüber liegenden Schichten zur Verfügung.}
+
+\definition[0]{Schicht}{besteht aus einer Menge von Softwarekomponenten (Module, Klassen, Objekte, Pakete) mit einer wohldefinierten Schnittstelle, nutzt die darunter liegenden Schichten und stellt seine Dienste darüber liegenden Schichten zur Verfügung.}
+
 \definition[0]{In-/Transparente Schichtenarchitektur}{Bei einer transparenten Schichtenarchitektur können bei einer Benutzt-Relation Schichten übersprungen werden. Bei intransparenter Architektur muss jede Schicht bis zur Zielschicht durchlaufen werden.}
 
 \subsection{Modulführer (Grobentwurf)}

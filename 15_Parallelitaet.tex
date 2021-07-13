@@ -22,7 +22,7 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
         \item Mind. 1 Kontrollfaden
     \end{itemize}
     \item CPU-Kontextwechsel zwischen Prozessen langsam
-\end{itemize}Enth
+\end{itemize}
 
 \subsubsection{Kontrollfaden}
 \begin{itemize}
@@ -63,10 +63,10 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
     \end{code}
     \important{Threads immer mit \texttt{.start()} starten, nicht \texttt{.run()}!}
 
-\subsubsection{Runnable vs. Thread}
+\subsection{\texttt{Runnable} vs. \texttt{Thread}}
 \begin{itemize}
     \item Die Kapselung der Aufgabe in eine \important{Runnable} erzeugt weniger Overhead
-    \item Im Gegensatz zu Thread ist Runnable serialisierbar $\Rightarrow$ kann über das Netzwerk versendet werden.
+    \item Im Gegensatz zu Thread ist Runnable serialisierbar $\Rightarrow$ kann über das Netzwerk versendet werden ($\Rightarrow$ master/worker).
 \end{itemize}
 
 \subsubsection{Koordination}

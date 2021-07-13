@@ -1,0 +1,126 @@
+\section{Testphase}
+
+\subsection{Definitionen}
+
+\subsubsection{Arten von Testhelfern}
+
+\definition[0]{Stummel}{Ein Stummel (engl. stub) ist ein nur rudimentär implementierter Teil der Software und dient als Platzhalter für noch nicht umgesetzte Funktionalität}
+\definition[0]{Attrappe}{Eine Attrappe (engl. dummy) simuliert die Implementierung zu Testzwecken}
+\definition[1]{Nachahmung}{Eine Nachahmung (engl. mock object) ist eine Attrappe mit zusätzlicher Funktionalität, wie bspw. das Einstellen der Reaktion der Nachahmung auf bestimmte Eingaben oder das Überprüfen des Verhaltens des „Klienten“}
+
+\subsubsection{Arten von Fehlern}
+
+\definition[0]{Anforderungsfehler (Fehler im Pflichtenheft)}{z.B.: Inkorrekte Angaben der Benutzerwünsche, unvollständige Angaben über Anforderungen, Inkonsistenz verschiedener Anforderungen oder Undurchführbarkeit}
+\definition[0]{Entwurfsfehler (Fehler in der Spezifikation)}{Zu den Entwurfsfehlern gehören eine unvollständige oder fehlerhafte Umsetzung der Anforderung, Inkonsistenz der Spezifikation oder des Entwurfs, sowie Inkonsistenz zwischen Anforderung, Spezifikation und Entwurf.}
+\definition[0]{Implementierungsfehler (Fehler im Programm)}{Als Implementierungsfehler zählen Defekte im Programm, ausgelöst durch die fehlerhafte Umsetzung der Spezifikation}
+
+\subsection{Fehleraufdeckung ist das Ziel der Testverfahren}
+\begin{itemize}
+    \item Vollständiges Testen aller Kombinationen aller Eingabewerte ist nicht möglich
+    \item Korrektheit nur mit formalem Korrektheitsbeweis möglich, welcher nur für kleine Programme möglich ist.
+\end{itemize}
+
+\subsection{Arten von Fehlern}
+\begin{itemize}
+    \item Ein \babyblue{Versagen} oder \babyblue{Ausfall} ist die Abweichung des Verhaltens der Software von der Spezifikation.
+    \item Ein \babyblue{Defekt} ist ein Mangel in einem Softwareprodukt, der zu einem Versagen führen kann.
+    \item Ein \babyblue{Irrtum} oder \babyblue{Herstellungsfehler} ist eine menschliche Aktion, die einen Defekt verursacht.
+\end{itemize}
+
+\subsection{Transformation in Zwischensprache}
+\fig{Beispieltransformation}{./data/transformation_zwischensprache}
+
+Einen \babyblue{Grundblock} bezeichnet eine maximal lange Folge fortlaufender Anweisungen der Zwischensprache,
+\begin{itemize}
+    \item in die der Kontrollfluss nur am Anfang eintritt
+    \item die außer am Ende keine Sprungbefehle enthält.
+\end{itemize}
+
+\newpage
+
+\subsection{Kontrollflussgraph}
+Ein \babyblue{Kontrollflussgraph} eines Programms P ist ein gerichteter Graph G mit 
+\[G=(N,E,n_{start},n_{stopp})\]
+wobei
+\begin{itemize}
+    \item N die Menge der Grundblöcke in P,
+    \item E $\subset$ N$\times$N die Menge der Kanten, wobei die Kanten die Ausführungsreihenfolge von je zwei Grundblöcken angeben.
+    \item $n_{start}$ der Startblock
+    \item $n_{stopp}$ der Stoppblock
+\end{itemize}
+\fig{Beipiel Kontrollflussgraph}{./data/kontrollflussgraph}
+
+\newpage
+
+\fig{Pfadüberdeckungsbeispiel}{./data/pfazeigüberd}
+\definition[0]{Die Pfadüberdeckung}{fordert die Ausführung aller unterschiedlichen, vollständigen Pfade im Programm.}
+\begin{itemize}
+    \item Anweisungsüberdeckung
+    $A = \{(Start,1,2,3,4,5,Stopp)\}$
+    \item Zeigüberdeckung
+    $Z = A \cup \{(Start,1,3,5,Stopp)\}$
+    \item Pfadüberdeckung
+    $P = Z \cup \{(Start,1,3,4,5,Stopp)\} \cup \{(Start,1,2,3,5, Stopp)\}$
+\end{itemize}
+
+\subsection{Äquivalenzklassen}
+Aufteilung der einzelnen Parameter in Klassen: Unterscheide zulässige und unzulässige Eingaben und bilde das Kreuzprodukt aus allen Parametern ($\Rightarrow$ Bilde alle Parameterklassenkombinationen).
+\\\\
+Ein Beispiel:
+\\
+\begin{code}
+    \javaPublic \javaInt example(\javaInt zahl) \{\\
+    \quad\dots\ \\\}
+\end{code}
+\\
+Die Methode gebe für positive Werte von $zahl$, die eine ganzzahle Wurzel haben, eben diese aus. Für negative Werte folgt eine IllegalArgumentException. Ist die Wurzel zur Zahl nicht ganzzahlig, wird -1 ausgegeben.
+\\
+\\
+Es folgen die Äquivalenzklassen:
+\begin{itemize}
+    \item Zahl mit einer ganzzahligen Wurzel
+    \item Zahl ohne ganzzahlige Wurzel
+    \item Negative Zahl
+\end{itemize}
+
+\subsection{Testwerkzeuge}
+\subsubsection{Zusicherungen (engl. assertions)}
+\begin{itemize}
+    \item Boolesche Funktion die vor und Nachbedingung überprüft.
+    \item Invarianten in Datenstruktur.
+    \item Werden zur Laufzeit überprüft
+    \begin{itemize}
+        \item Muss in Java explizit aktiviert werden
+        \item Im Fehlerfall melden sie sich mit einer Ausnahme oder Fehlermeldung
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Zusicherungen in Java}
+\begin{code}
+    assert Zusicherung;
+\end{code}
+
+Falls Zusicherung false ergibt, wird Ausnahme AssertionError ausgelöst.
+
+\subsubsection{Benutzung von Zusicherungen | In Java}
+\begin{itemize}
+    \item Konvention für \babyblue{öffentliche} Methoden
+\begin{itemize}
+    \item Überprüfung der Eingabeparameter nicht mit zusicherungen, sondern mit IllegalArgumentException.
+    \item \babyblue{Folge}: Klientprogramme können darauf reagieren
+\end{itemize}
+\item Konvention für \babyblue{private} Methoden
+\begin{itemize}
+    \item Eingabeparameter, Nachbedingungen und Invarianten aller privater Methoden mit Zusicherungen überprüfen.
+    \item Grund: Verletzung ist unerwarteter Defekt
+    \item Aber: Falsche Parameter bei öffentlichen Methoden sind nicht unerwartet.
+\end{itemize}
+\item Zusicherungen können Missverständnisse und Fehlinterpretationen der Programmiererer aufdecken.
+\item In Produktionsumgebungen werden die Zusicherungen abgeschaltet.
+\item Beim Auftreten eines Defekts oder beim Testen werden diese wieder zugeschaltet.
+\item \textbf{Zusicherungen sind keine Testfälle}
+\begin{itemize}
+    \item Es werden lediglich bestimmte Bedingungen im Programmlauf überprüft.
+\end{itemize}
+\end{itemize}
+

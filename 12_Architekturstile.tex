@@ -1,6 +1,8 @@
 \section{Architekturstile}
 \definition[0]{Architekturstil}{Die Architekturstile legen den \important{Grobaufbau} eines Softwaresystems fest.}
 
+\subsection{Schichtenarchitektur}
+
 \definition[0]{Schichtenarchitektur}{ist die Gliederung einer Softwarearchitektur in hierarchisch geordnete Schichten. Eine Schicht besteht aus einer Menge von Software- Komponenten (Module, Klassen, Objekte, Pakete) mit einer wohldefinierten Schnittstelle, nutzt die darunter liegenden Schichten und stellt seine Dienste darüber liegenden Schichten zur Verfügung.}
 \anmerkung[1]{}{Zwischen den einzelnen Schichten ist die Benutztrelation linear, baumartig, oder ein azyklischer Graph. Innerhalb einer Schicht ist die Benutztrelation beliebig}
 \fig{Beispiel für eine Drei-Schichten-Architektur}{./data/architekturstile/3_schichten_architektur.png}
@@ -19,6 +21,8 @@
 \anmerkung[1]{Transparente und Intransparente Schichten}{Eine Schicht einer transparenten Schichtenarchitektur kann auf alle beliebigen unteren Schichten der Hierarchie direkt zugreifen. Schichten im intransparenten Modell müssen jede Schicht bis zur Zielschicht durchlaufen.}
 
 \newpage
+
+\subsection{Klient/Dienstgeber}
 
 \definition[0]{Klient/Dienstgeber}{Ein oder mehrere Dienstgeber bieten Dienste für andere Subsysteme, Klienten genannt, an. Jeder Klient ruft eine Funktion des Dienstgebers auf, welcher den gewünschten Dienst ausführt und das Ergebnis zurückliefert. Jeder Klient muss hierzu die Schnittstelle des Dienstgebers kennen jedoch nicht jeder Dienstgeber die Schnittstelle aller Klienten.}
 \begin{itemize}
@@ -52,6 +56,8 @@ Beispiel
     \end{itemize}
 \end{itemize}
 
+\subsection{Partnernetze}
+
 \definition[0]{Partnernetze}{Partnernetze sind Peer-to-Peer-Netze und eine Verallgemeinerung des Klient/Dienstgeber-Stils. Im Netz sind alle Teilnehmer gleichberechtigt und laufen auf unterschiedlichen Rechnern. Ein Teilnehmer ist gleichzeitig Klient und Dienstgeber.}
 Eigenschaften:
 \begin{itemize}
@@ -64,15 +70,22 @@ Eigenschaften:
 
 \fig{Partnernetzstilstruktur}{./data/architekturstile/peertopeer.png}
 
+\subsection{Datenablage}
+
 \definition[0]{Datenablage}{Es gibt eine zentrale Ablagestelle für Daten während die Subsysteme lose gekoppelt nur darüber interagieren}
 
 \fig{Datenablagenstilstruktur}{./data/architekturstile/depot.png}
 
+\subsection{Modell-Präsentation-Steuerung}
+
 \definition[0]{Modell-Präsentation-Steuerung}{Die Modell-Präsentation-Steuerung (engl. Model-View-Controller) trennt Daten von deren Darstellung.}
 \anmerkung[0]{(Daten-) Modell}{Das Subsystem zur Datenhaltung, welches neben Daten auch oftmals die Anwendungslogik beinhaltet.}
-\anmerkung[0]{View (Präsentation, Sicht)}{Verantwortlich für die Darstellung der Objekte der Anwendung.}
+\anmerkung[0]{View (Präsentation oder Sicht)}{Verantwortlich für die Darstellung der Objekte der Anwendung.}
 \anmerkung[0]{Controller (Steuerung)}{Das Subsystem für die Entgegennahme der Benutzereingaben und Steuerung der Interaktion zwischen Modell und Präsentation. Es aktualisiert das Modell und stößt ferner das melden von Änderungen der Modelldaten an die Präsentationen an. Die Steuerung kann zusätzlich einen Teil der Anwendungslogik enthalten.}
 
+\newpage
+
+\subsection{Fließband}
 
 \definition[0]{Fließband}{Jede Stufe des Fließbands ist eine eigenständig ablaufender Prozess oder Faden mit eigenem Befehlszähler. Stufen sind ggfs. mit Puffern verbunden, um Geschwindigkeitsdifferenzen auszugleichen}
 \\
@@ -84,9 +97,14 @@ Stufen können bei Parallelrechnern echt paralell ablaufen (Pipelining) und dami
 \\
 Geignet für Verarbeitung von Datenströmen wie bspw. Videocodierung, -bearbeitung, Übersetzer, Stapelverarbeitung.
 
+\subsection{Rahmenarchitektur}
 
 \definition[0]{Rahmenarchitektur}{Die Rahmenarchitektur bietet ein (nahezu) vollständiges Programm, das durch Einfüllen geplanter „Lücken” oder Erweiterungspunkten erweitert werden kann. Es enthält die vollständige Anwendungslogik, meistens sogar ein komplettes Hauptprogramm}
 \anmerkung[0]{Hollywood-Prinzip}{„Don’t call us – we call you“. Das Hauptprogramm besteht bereits und ruft die Erweiterungen der Benutzer auf.}
+
+\newpage
+
+\subsection{Dienstorientierte Architektur}
 
 \definition[0]{Dienstorientierte Architektur}{(Service Orientated Architecture, SOA) Die Anwendungen des Programms werden aus unabhängigen Diensten zusammengestellt. Es ist ein abstraktes Konzept einer Softwarearchitektur.}
 \\
@@ -98,8 +116,8 @@ Die Dienste sind zentrale Elemente des Unternehmens und stellen gekapselte Funkt
     \item Programmiersprachen- und Plattfrom-unabhängige Bereitstellung der Dienste und Dienstkompositionen
 \end{itemize}
 
-\subsubsection{Programmfamilie}
-\definition[0]{Definition}{Eine Programmfamilie oder Software-Produktlinie ist eine Menge von Programmen, die erhebliche Anteile von Anforderungen, Entwurfsbestandteilen oder Softwarekomponenten gemeinsam haben}
+\subsection{Programmfamilie}
+\definition[0]{Programmfamilie}{Eine Programmfamilie oder Software-Produktlinie ist eine Menge von Programmen, die erhebliche Anteile von Anforderungen, Entwurfsbestandteilen oder Softwarekomponenten gemeinsam haben}
 Ziele:
 \begin{itemize}
     \item Ausnutzen von Gemeinsamkeiten

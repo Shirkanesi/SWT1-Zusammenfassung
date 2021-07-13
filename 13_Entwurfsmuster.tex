@@ -10,48 +10,19 @@ Sie dienen außerdem:
 \end{itemize}
 
 \subsection{Schnelle Übersicht}
-\subsubsection{Entkopplungsmuster}
-\begin{itemize}
-    \item Adapter
-    \item Beobachter
-    \item Brücke
-    \item Iterator
-    \item Stellvertreter
-    \item Vermittler
-\end{itemize}
-\subsubsection{Variantenmuster}
-\begin{itemize}
-    \item Abstrakte Fabrik
-    \item Besucher
-    \item Fabrikmethode
-    \item Kompositum
-    \item Schablonenmethode
-    \item Strategie
-    \item Dekorierer
-\end{itemize}
-\subsubsection{Zustandshandhabungsmuster}
-\begin{itemize}
-    \item Einzelstück
-    \item Fliegengewicht
-    \item Memento
-    \item Prototyp
-    \item Zustand
-\end{itemize}
-\subsubsection{Steuerungsmuster}
-\begin{itemize}
-    \item Befehl
-    \item Master/Slave; Maste/Worker
-\end{itemize}
-\subsubsection{Virtuelle Maschinen}
-\subsubsection{Bequemlichkeitsmuster}
-\begin{itemize}
-    \item Bequemlichkeitsklasse
-    \item Bequemlichkeitsmethode
-    \item Fassade
-    \item Null-Objekt
-\end{itemize}
-
-\subsection{Entkopplungsmuster}
+\begin{table}[h]
+\begin{tabular}{l|l}
+Kategorie & Muster   \\\hline
+Entkopplungsmuster & Adapter, Beobachter, Brücke, Iterator, Stellvertreter, Vermittler  \\
+Variantenmuster & Abstrakte Fabrik, Besucher, Fabrikmethode, Kompositum, \\& Schablonenmethode, Strategie, Dekorierer \\
+Zustandshandhabungsmuster & Einzelstück, Fliegengewicht, Memento, Prototyp, Zustand  \\
+Steuerungsmuster & Befehl, Master/Slave (Master/Worker)  \\
+Virtuelle Maschinen &   \\
+Bequemlichkeitsmuster & Bequemlichkeitsklasse, Bequemlichkeitsmethode, Fassade, Null-Objekt 
+\end{tabular}
+\end{table}
+\newpage
+\subsection{Entkopplungs-Muster}
 \definition[1]{Entkopplungs-Muster}{Entkopplungsmuster teilen ein System in mehrere Einheiten, so dass einzelne Einheiten unabhängig voneinander erstellt, verändert, ausgetauscht und wiederverwendet werden können. Der Vorteil von Entkopplungsmustern ist, dass ein System durch lokale Änderungen verbessert, angepasst und erweitert werden kann, ohne das ganze System zu modifizieren.}
 % Adapter
 \subsubsection{Adapter}
@@ -59,7 +30,7 @@ Sie dienen außerdem:
 \anmerkung[0]{}{$\Rightarrow$ Klassen können zusammenarbeiten, die wegen inkompatibler Schnittstelle ansonsten nicht in der Lage wären.}
 \fig{Adapter ohne Mehrfachvererbung}{./data/entwurfsmuster/entkopplungsmuster/adapter_1.png}
 \fig{Adapter mit Mehrfachvererbung}{./data/entwurfsmuster/entkopplungsmuster/adapter_2.png}
-
+\newpage
 \subsubsection{Beobachter / Observer}
 \definition[0]{Beobachter}{Ein Beobachter beobachtet ein Objekt und informiert andere Objekte über Änderungen an diesem.}
 \anmerkung[0]{}{Ein Beobachter definiert eine 1-zu-n Abhängigkeit zwischen Objekten, so dass die Änderung eines Zustandes eines Objektes dazu führt, dass alle abhängigen Objekte benachrichtigt und automatisch aktualisiert werden.}
@@ -71,36 +42,32 @@ Sie dienen außerdem:
 \anmerkung[1]{}{Wenn ein Objekt andere Objekte benachrichtigen muss, ohne Annahmen über diese Objekte zu treffen.}
 \anmerkung[0]{Konsequenzen}{Beobachter können neu hinzugefügtoder entferntwerden, ohnedas Subjekt oder andere Beobachter zu ändern}
  
- \subsubsection{Brücke / Bridge}
- \definition[0]{Zweck}{Trennt Abstraktion von ihrer Implementierung, sodass beide unabhängig voneinander variiert werden können}
- \fig{Brücke}{./data/entwurfsmuster/entkopplungsmuster/bridge.png}
- \\
- Anwendbarkeit:
- \begin{itemize}
-     \item Wenn eine dauerhafte Verbindung zwischen Abstraktion und Implementierung vermieden werden soll
-     \item Wenn Erweiterbarkeit durch Unterklassen für beide Seiten gefordert ist
-     \item Wenn Änderungen der Implementierung einer Abstraktion keine Auswirkung auf Klienten haben soll
-     \item Wenn die Implementierung der Abstraktion vollständig vom Klienten versteckt werden sollen.
- \end{itemize}
- 
- 
- \fig{Beispiel für ein Brückenmuster}{./data/entwurfsmuster/entkopplungsmuster/bridge_example.png}
- 
- 
+\subsubsection{Brücke / Bridge}
+\definition[0]{Brücke}{Die Brücke trennt Abstraktion von ihrer Implementierung, sodass beide unabhängig voneinander variiert werden können.}
+\fig{Brücke}{./data/entwurfsmuster/entkopplungsmuster/bridge.png}
+\\
+Anwendbarkeit:
+\begin{itemize}
+    \item Wenn eine dauerhafte Verbindung zwischen Abstraktion und Implementierung vermieden werden soll
+    \item Wenn Erweiterbarkeit durch Unterklassen für beide Seiten gefordert ist
+    \item Wenn Änderungen der Implementierung einer Abstraktion keine Auswirkung auf Klienten haben soll
+    \item Wenn die Implementierung der Abstraktion vollständig vom Klienten versteckt werden sollen.
+\end{itemize}
+\fig{Beispiel für ein Brückenmuster}{./data/entwurfsmuster/entkopplungsmuster/bridge_example.png}
+\newpage
 \subsubsection{Iterator}
-Ein Iterator ermöglicht einen \important{sequentiellen Zugriff} auf die Elemente eines zusammengesetzten Objektes, ohne seine zugrundeliegendes Repräsentation offenzulegen.
-\newline
+\definition[1]{Iterator}{Ein Iterator ermöglicht einen \important{sequentiellen Zugriff} auf die Elemente eines zusammengesetzten Objektes, ohne seine zugrundeliegendes Repräsentation offenzulegen.}
 \fig{Struktur eines Iterators}{./data/entwurfsmuster/entkopplungsmuster/iterator_1.png}
-\warn[0]{}{Ein funktioniert immer sequenziell}
-\anmerkung[1]{}{Das momentane Element kann aus der Datenstruktur entfernt werden.}
+\warn[0]{}{Ein Iterator funktioniert immer sequenziell}
+\anmerkung[0]{}{Das momentane Element kann aus der Datenstruktur entfernt werden.}
 \anmerkung[0]{Anwendbarkeit}{Um den Zugriff auf den Inhalt eines zusammengesetzten Objekts zu ermöglichen, ohne dabei seine interne Struktur offenzulegen.}
-\anmerkung[0]{}{Robustist der Iterator, weil er gleichzeitig mehrere Traversierungen ermöglicht. Jeder Iterator enthält eine eigene „Laufvariable“.}
+\anmerkung[0]{}{Robust ist der Iterator, weil er gleichzeitig mehrere Traversierungen ermöglicht. Jeder Iterator enthält eine eigene „Laufvariable“.}
 
+\newpage
 \subsubsection{Stellvertreter / Proxy}
 \definition[0]{Stellvertreter}{Ein Proxy kontrolliert den Zugriff auf ein Objekt mit Hilfe eines vorgelagerten \important{Stellvertreterobjekts}}
 \fig{Struktur eines Stellvertreters}{./data/entwurfsmuster/entkopplungsmuster/proxy_1.png}
 \anmerkung[0]{Anwendbarkeit}{Das Stellvertretermuster ist anwendbar, sobald es den Bedarf nach einer anpassungsfähigeren und intelligenteren Referenz auf ein Objekt als einen einfachen Zeiger gibt}
-
 \subsubsection{Vermittler / Mediator}
 \definition[0]{Vermittler}{Ein Vermittler definiert ein Objekt, welches das \important{Zusammenspiel} einer Menge von Objekten in sich Kapselt}
 \anmerkung[0]{}{Vermittler fördern \important{lose Kopplung}, indem sie Objekte davon abhalten, aufeinander explizit Bezug zu nehmen. Sie ermöglichen es, das Zusammenspiel der Objekte unabhängig zu variieren.}
@@ -108,7 +75,10 @@ Ein Iterator ermöglicht einen \important{sequentiellen Zugriff} auf die Element
 \anmerkung[0]{Anwendbarkeit}{Wenn eine Menge von Objekten vorliegt, die in wohl-definierter, aber \important{komplexer} Weise zusammen arbeiten. Die sich ergebenden Abhängigkeiten sind unstrukturiert und schwer zu verstehen.}
 
 \newpage
+
 \subsection{Varianten-Muster}
+
+\definition[0]{Varianten-Muster}{Fassen Gemeinsamkeiten von verwandten Elementen an einer einzigen Stelle zusammen. Hierdurch können unterschiedliche Komponenten einheitlich verwendet werden und Wiederholungen desselben Codes werden vermieden.}
 
 \subsubsection{Strategie}
 \definition[0]{Strategie}{Eine Strategie definiert eine Familie von Algorithmen, kapselt sie und macht sie austauschbar. Das Strategiemuster ermöglicht es, den Algorithmus unabhängig von den nutzenden Klienten zu variieren.}
@@ -117,13 +87,16 @@ Ein Iterator ermöglicht einen \important{sequentiellen Zugriff} auf die Element
 
 \fig{Beispiel einer Strategie [Anhand von Zeilenumbrechalgorithmen]}{./data/entwurfsmuster/variantenmuster/strategie_example.png}
 
-\anmerkung[0]{Anwendbarkeit}{Wenn unterschiedliche Varianten eines Algorithmus benötigt werden.}
-\anmerkung[0]{}{Wenn ein Algorithmus Datenstrukturen verwendet, die Klienten nicht bekannt sein sollen.}
-\anmerkung[0]{}{Wenn eine Klasse unterschiedliche Verhaltensweisen definiert und diese als mehrfache Fallunterscheidungen in ihren Operationen erscheinen. Mit Strategie kann man diese Fallunterscheidungen vermeiden (\anfuehrung{switch-lessprogramming}).}
-
+\anmerkung[0]{Anwendbarkeit}{
+    \begin{itemize}
+        \item Wenn unterschiedliche Varianten eines Algorithmus benötigt werden.
+        \item Wenn ein Algorithmus Datenstrukturen verwendet, die Klienten nicht bekannt sein sollen.
+        \item Wenn eine Klasse unterschiedliche Verhaltensweisen definiert und diese als mehrfache Fallunterscheidungen in ihren Operationen erscheinen. Mit Strategie kann man diese Fallunterscheidungen vermeiden (\anfuehrung{switchless programming}).
+    \end{itemize} $\>$
+}
 
 \subsubsection{Schablonenmethode}
-\definition[0]{Zweck}{Es wird ein Skelett eines Algorithmus als eine Operation definiert um einzelne Schritte an Unterklassen zu delegieren. Es ermöglicht die Änderung der Teilschritte in den Unterklassen ohne die Struktur des Algorithmus zu verändern}
+\definition[0]{Schablonenmethode}{Es wird ein Skelett eines Algorithmus als eine Operation definiert um einzelne Schritte an Unterklassen zu delegieren. Es ermöglicht die Änderung der Teilschritte in den Unterklassen ohne die Struktur des Algorithmus zu verändern}
 \fig{Schablonenmethodendiagramm}{./data/entwurfsmuster/variantenmuster/templatemethod.png}
 \\
 Die Schablonenmethode eignet sich, wenn...
@@ -132,9 +105,9 @@ Die Schablonenmethode eignet sich, wenn...
     \item Code-Duplikate von Teilalgorithmen vermieden werden sollen
 \end{itemize}
 
-
+\newpage
 \subsubsection{Fabrikmethode}
-\definition[0]{Fabrikmethode}{Eine Fabrikmethode definiert eine Klassenschnittstelle mit Operationen zum Erzeugen eines Objekts, aber lässt Unterklassen entscheiden, \important{von welcher Klasse} das zu erzeugende Objekt ist. Fabrikmethoden ermöglichen es, einer Klasse die Erzeugung von Objekten an Unterklassen zu \important{delegieren}.}
+\definition[0]{Fabrikmethode}{Eine Fabrikmethode definiert eine Klassenschnittstelle mit Operationen zum Erzeugen eines Objekts aber lässt Unterklassen entscheiden, \important{von welcher Klasse} das zu erzeugende Objekt ist. Fabrikmethoden ermöglichen es einer Klasse, die Erzeugung von Objekten an Unterklassen zu \important{delegieren}.}
 
 \fig{Struktur einer Fabrikmethode}{./data/entwurfsmuster/variantenmuster/fabrikmethode_1.png}
 
@@ -146,6 +119,7 @@ Anwendbar, wenn
     \item eine Klasse möchte, dass ihre Unterklassen festlegen, welche Objekte erzeugt werden sollen
 \end{itemize}
 
+\newpage
 \subsubsection{Abstrakte Fabrik (engl. abstract factory)}
 \definition[1]{Abstrakte Fabrik}{Bietet eine Schnittstelle zum \important{Erzeugen von Familien} verwandter oder voneinander abhängiger Objekte, ohne ihre konkreten Klassen zu benennen.}
 
@@ -160,7 +134,7 @@ Anwendbar, wenn
     \item Wenn ein System mit einer von mehreren \important{Produktfamilien} konfiguriert werden soll.
     \item Bei einer Klassenbibliothek, die nur die Schnittstellen, nicht aber die Implementierung offenlegt.
 \end{itemize}
-
+\newpage
 \subsubsection{Besucher (engl. visitor)}
 \definition[1]{Besucher}{Ein Besucher kapselt eine auf eine Objektstruktur auszuführende \important{Operation} als ein Objekt}
 
@@ -175,7 +149,7 @@ Anwendbar, wenn
 \end{itemize}
 
 \subsubsection{Kompositum}
-\definition[0]{Kompositum}{Fügt Objekte zu Baumstrukturen zusammen, um Bestands-Hierarchien zu repräsentieren. Ermöglicht es Klienten, sowohl einzelne Objekte als auch Aggregate einheitlich zu behandeln.}
+\definition[0]{Kompositum}{Fügt Objekte zu Baumstrukturen zusammen, um Bestands-Hierarchien zu repräsentieren. Ermöglicht es Klienten sowohl einzelne Objekte als auch Aggregate einheitlich zu behandeln.}
 
 \fig{Struktur eines Kompositums}{./data/entwurfsmuster/variantenmuster/kompositum_1.png}
 
@@ -186,9 +160,9 @@ Anwendbarkeit:
     \item Wenn Bestands-Hierarchien von Objekten repräsentiert werden sollen.
     \item Wenn die Klienten in der Lage sein sollen, die Unterschiede zwischen zusammengesetzten und einzelnen Objekten zu ignorieren.
 \end{itemize}
-
+\newpage
 \subsubsection{Dekorierer}
-\definition[0]{Zweck}{Fügt einem Objekt dynamisch neue Funktionalität hinzu}
+\definition[0]{Dekorierer}{Fügt einem Objekt dynamisch neue Funktionalität hinzu}
 
 \fig{Struktur des Dekorier-Modells}{./data/entwurfsmuster/variantenmuster/decorator.png}
 
@@ -206,10 +180,14 @@ Und wo der Stellvertreter eingesetzt wird...
     \item Eigenes Objekt mit Subjekt im Hintergrund
 \end{itemize}
 
+\newpage
+\subsection{Zustandshandhabungs-Muster}
 
-\subsection{Zustandshandhabungsmuster}
+\definition[0]{Zustandshandhabungs-Muster}{Die Muster dieser Kategorie bearbeiten den Zustand von Objekten, unabhängig von deren Zweck.}
+
 \subsubsection{Einzelstück}
-\definition[0]{Zweck}{Zusicherung, dass eine Klasse genau ein Exemplar besitzt und globalen Zugriffspunkt bereitstellen (getInstance())}
+
+\definition[0]{Einzelstück}{Zusicherung, dass eine Klasse genau ein Exemplar besitzt und globalen Zugriffspunkt bereitstellen (getInstance())}
 
 \fig{Einzelstückmusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/singelton.png}
 
@@ -222,7 +200,7 @@ Anwendbar, wenn...
 
 
 \subsubsection{Fliegengewicht (engl. flyweight)}
-\definition[0]{Zweck}{Nutze Objekte kleinster Granularität gemeinsam, um große Mengen von ihnen effizient speichern zu können}
+\definition[0]{Fliegengewicht}{Nutze Objekte kleinster Granularität gemeinsam, um große Mengen von ihnen effizient speichern zu können}
 \fig{Fliegengewichtmusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/flyweight.png}
 Anwendbar, wenn
 \begin{itemize}
@@ -243,7 +221,7 @@ Anwendbar, wenn...
 \end{itemize}
 
 \subsubsection{Prototyp}
-\definition[0]{Zweck}{Bestimme die Art der zu erzeugenden Objekte anhand eines typischen Objekts und erstelle neue Objekte durch Kopieren dieses Prototyps}
+\definition[0]{Prototyp}{Bestimme die Art der zu erzeugenden Objekte anhand eines typischen Objekts und erstelle neue Objekte durch Kopieren dieses Prototyps}
 \fig{Prototypenmusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/prototype.png}
 Andwendbar, wenn
 \begin{itemize}
@@ -262,8 +240,12 @@ Anwendbar, wenn
     \item das Verhaltendes Objektes von dessen Zustand abhängt und das Objekt sein Verhalten während der Laufzeit, abhängig vom aktuellen Zustand, ändern muss
 \end{itemize}
 
-\subsection{Steuerungsmuster}
+\subsection{Steuerungs-Muster}
+
+\definition[0]{Steuerungs-Muster}{Steuerungsmuster steuern den Kontrollfluss. Sie bewirken, dass zur richtigen Zeit die richtigen Methoden aufgerufen werden}
+
 \subsubsection{Befehl (engl. command)}
+
 \definition[0]{Command}{Kapselt einen Befehl als ein Objekt. Dies ermöglicht es, Klienten mit verschiedenen Anfragen zu parametrisieren, Operationen in eine Warteschlange zu stellen, ein Logbuch zu führen und Operationen rückgängig zu machen.}
 \fig{Steuerungsmusterstruktur}{./data/entwurfsmuster/steuerungsmuster/command.png}
 Anwendbar, wenn...
@@ -285,10 +267,11 @@ Anwendbar, wenn...
     \item die Belastung der Arbeiter ausgeglichenwerden soll.
 \end{itemize}
 
-
+\newpage
 \subsection{Bequemlichkeitsmuster}
+\definition[0]{Bequemlichkeitsmuster}{Entwurfsmuster, die etwas Schreib- oder Denkarbeit sparen.}
 \subsubsection{Bequemlichkeitsklasse}
-\definition[0]{Zweck}{Vereinfachen von Methodenaufrufe durch Bereithaltung der Parameter (Standardwerte) in einer speziellen Klasse. Also quasi Methoden überladen und dann Standardwerte für die fehlenden Parameter verwenden}.
+\definition[0]{Bequemlichkeitsklasse}{Vereinfachen von Methodenaufrufe durch Bereithaltung der Parameter (Standardwerte) in einer speziellen Klasse. Also quasi Methoden überladen und dann Standardwerte für die fehlenden Parameter verwenden}.
 \fig{Bequemlichkeitsklassenmusterstruktur}{./data/entwurfsmuster/bequemlichkeitsmuster/bequemlichkeitsklasse.png}
 Anwendbar, wenn
 \begin{itemize}
@@ -303,7 +286,7 @@ Anwendbar, wenn Methodenaufrufe häufig mit den gleichen Parametern auftreten.
 
 
 \subsubsection{Fassade}
-\definition[0]{Zweck}{Einheitliche Schnittstelle zu einer Menge von Schnittstellen bieten}
+\definition[0]{Fassade}{Einheitliche Schnittstelle zu einer Menge von Schnittstellen bieten}
 \fig{Fassadenmusterstruktur}{./data/entwurfsmuster/bequemlichkeitsmuster/fassade.png}
 Anwendbar, wenn
 \begin{itemize}

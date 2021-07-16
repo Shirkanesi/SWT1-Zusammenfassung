@@ -2,7 +2,10 @@
 \usepackage[utf8]{inputenc}
 
 % Version, bitte bei jeder Veröffentlichung entsprechend inkrementieren.
-\newcommand{\version}{0.2.1}
+\newcommand{\version}{0.2.2}
+
+% REMOVE THIS IF YOU WANT TO HAVE LINE INDENTS!!!
+\setlength{\parindent}{0cm}
 
 %\usepackage{fontspec}
 %\setmainfont{[MyFont.ttf]}
@@ -14,7 +17,11 @@
 \usepackage[T1]{fontenc}
 \usepackage{a4wide}
 \usepackage{xcolor}
-\usepackage{sectsty}
+
+% Section-Font
+% \usepackage{sectsty}
+% \sectionfont{\scshape}
+
 \usepackage{bbm}
 \usepackage{enumitem}
 \usepackage{subfiles}
@@ -45,7 +52,6 @@
 
 %Bilder
 \graphicspath{ {./images/}}
-
 
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
@@ -91,7 +97,7 @@
  %\pagemark
 
 % Layout
-\sectionfont{\scshape}
+
 
 %Subtitle
 \usepackage{relsize}
@@ -144,13 +150,14 @@
 %\newcommand{\todo}{\strong{TODO: }}
 \newcommand{\todo}[1]{
     \PackageWarning{TODO}{#1}
+    % \PackageError{TODO}{#1}
     %\textbf{\textsc{\textcolor{red}{TODO: #1}}}
 }
 
 \newcommand{\kapitel}[2]{Kapitel #1 - \textsc{#2}}
 
-
-
+\newcommand{\emptyline}[0]{$\>$\\}
+\newcommand{\n}[0]{$\>$\\}
 
 % Farbdefinitionen
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
@@ -256,7 +263,7 @@
 
 \begin{document}
 \maketitle
-
+\includegraphics[width=\textwidth]{./data/tichy}
 % \href{https://www.youtube.com/watch?v=q7oVvnlR0oQ}{\includegraphics[width=\textwidth]{spaltendermatrix}}
 \newpage
 
@@ -311,6 +318,7 @@
 \subfile{18_AbnahmeWartungPflege}
 \newpage
 
+\printindex
 \newpage
 \listoffigures
 \end{document}

@@ -62,7 +62,6 @@ Man sagt dann auch, dass B von A erbt. Da jedes Exemplar von B auch ein Exemplar
 \definition[1]{}{Wenn eine Klasse X eine Schnittstelle A \important{implementiert}, dann ist die Menge der abstrakten Methoden von A eine Teilmenge der Methodendefinitionen von X, wobei X zusätzlich jeweils eine Implementierung angeben \underline{darf}.}
 
 \subsection{Liskovsches Substitutionsprinzip}
-\todo{Change image}
 \principle[0]{Liskovsches Substitutionsprinzip}{(engl. Liskov substitution priciple): In einem Programm, in dem U eine Unterklasse von K ist, kann jedes Exemplar der Klasse K durch ein Exemplar von U ersetzet werden, wobei das Programm weiterhin korrekt funktioniert.)}
 \anmerkung[0]{}{Das Substitutionsprinzip fordert nur, dass man ein Exemplar der Unterklasse so verwenden kann, als wäre es ein Exemplar der Oberklasse. Es wird nicht gefordert, dass die Signatur gleich bleibt!}
 \anmerkung[0]{}{Die Unterklasse hat die gleichen oder schwächere Vorbedingungen als die Oberklasse\\
@@ -81,7 +80,7 @@ Für Methoden heißt das, dass bei einer Substitution die Ergebnisse der Unterkl
 \anmerkung[1]{}{Bei Rückgabewerten unproblematisch}
 % Kontravarianz
 \definition[0]{Kontravarianz}{(engl. contravariance): Verwendung einer Verallgemeinerung des Parametertyps in der überschreibenden Methode}
-\anmerkung[0]{}{Bei Eingabeparametern unproblematisch}
+\anmerkung[0]{}{Bei Eingabeparametern unproblematisch $\Rightarrow$ in Java nicht erlaubt}
 \imp[1]{}{Bei Rückgabewerten ein Problem}
 % Invarianz
 \definition[0]{Invarianz}{(engl. invariance): keine Modifikation der Typen}

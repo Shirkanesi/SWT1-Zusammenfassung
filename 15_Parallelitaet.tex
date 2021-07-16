@@ -24,6 +24,7 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
     \item CPU-Kontextwechsel zwischen Prozessen langsam
 \end{itemize}
 
+\newpage
 \subsubsection{Kontrollfaden}
 \begin{itemize}
     \item Instuktionsfolge, die ausgeführt wird
@@ -45,7 +46,7 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
 
 \fig{Prozesse und Kontrollfäden}{./data/processthread}
 
-
+\newpage
 \section{Parallelität in Java}
     \begin{code}
         \javaPublic \javaKeyword{interface}Runnable \{\\
@@ -99,8 +100,7 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
     \end{itemize}
     \item \babyblue{Atomarität}: Java garantiert, das Zugriffe auf einzelne Variablen immer atomar erfolgen.
     \begin{itemize}
-        \item Ausgenommen sind 64 Bit variablen
-        \item \javaKeyword{double} \javaKeyword{long}
+        \item Ausgenommen sind 64-Bit-Variablen (\javaKeyword{double} \javaKeyword{long})
     \end{itemize}
     \item Zugriffe auf mehrere Variablen, oder aufeinanderfolgende Lese- und Schreiboperationen werden nicht atomar ausgeführt.
     \begin{itemize}

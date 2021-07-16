@@ -234,11 +234,16 @@ Andwendbar, wenn
 
 \subsubsection{Zustand}
 \definition[0]{Zustand (engl. state)}{Ändert das \important{Verhalten} des Objektes, wenn sich dessen interner Zustand ändert.}
-\fig{Mementomusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/zustand.png}
+\fig{Zustandsmusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/zustand.png}
 Anwendbar, wenn
 \begin{itemize}
     \item das Verhaltendes Objektes von dessen Zustand abhängt und das Objekt sein Verhalten während der Laufzeit, abhängig vom aktuellen Zustand, ändern muss
 \end{itemize}
+
+\definition[0]{Implizite Speicherung}{Der Zustand wird aus Attributen berechnet und nicht explizit gespeichert}
+\definition[0]{Explizite Speicherung}{Der Zustand wird durch eine separate Instanzvariable gespeichert. Hierfür benötigt es eine explizite Zustandsüberführungsfunktion}
+\definition[0]{Eingebettete Speicherung}{Die Methoden einer Klasse kennen den gesamten Automaten und sorgen für die Zustandswechsel}
+\definition[0]{Ausgelagerte Speicherung}{Zustände werden als separate Objekte modelliert, worin die Methoden laufen}
 
 \subsection{Steuerungs-Muster}
 
@@ -294,8 +299,7 @@ Anwendbar, wenn
     \item es viele Abhängigkeiten zwischen Klient und Implementierung einer Abstraktion gibt. Die Fassade entkoppelt die Subsysteme von Klienten und anderen Subsystemen
 \end{itemize}
 
-
-
+\newpage
 \subsubsection{Null-Objekt}
 \definition[0]{Null-Objekt}{stellt einen \important{Stellvertreter} zur Verfügung, der die gleiche Schnittstelle bietet, aber nichts tut. Das Null-Objekt kapselt die Implementierungsentscheidung (wie genau es \anfuehrung{nichts tut}) und versteckt diese Details vor seinen Mitarbeitern.}
 Zeilen wie:\\

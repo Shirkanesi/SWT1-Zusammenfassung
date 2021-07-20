@@ -12,38 +12,39 @@ Sie dienen außerdem:
 \subsection{Schnelle Übersicht}
 \begin{table}[h]
 \begin{tabular}{l|l}
-Kategorie & Muster   \\\hline
-Entkopplungsmuster & Adapter, Beobachter, Brücke, Iterator, Stellvertreter, Vermittler  \\
-Variantenmuster & Abstrakte Fabrik, Besucher, Fabrikmethode, Kompositum, \\& Schablonenmethode, Strategie, Dekorierer \\
-Zustandshandhabungsmuster & Einzelstück, Fliegengewicht, Memento, Prototyp, Zustand  \\
-Steuerungsmuster & Befehl, Master/Slave (Master/Worker)  \\
-Virtuelle Maschinen &   \\
-Bequemlichkeitsmuster & Bequemlichkeitsklasse, Bequemlichkeitsmethode, Fassade, Null-Objekt 
+\toprule
+Kategorie & Muster   \\\midrule
+Entkopplungsmuster & Adapter, Beobachter, Brücke, Iterator, Stellvertreter, Vermittler  \\\hline
+Variantenmuster & Abstrakte Fabrik, Besucher, Fabrikmethode, Kompositum, \\& Schablonenmethode, Strategie, Dekorierer \\\hline
+Zustandshandhabungsmuster & Einzelstück, Fliegengewicht, Memento, Prototyp, Zustand  \\\hline
+Steuerungsmuster & Befehl, Master/Slave (Master/Worker)  \\\hline
+Virtuelle Maschinen &   \\\hline
+Bequemlichkeitsmuster & Bequemlichkeitsklasse, Bequemlichkeitsmethode, Fassade, Null-Objekt \\\bottomrule
 \end{tabular}
 \end{table}
 \newpage
 \subsection{Entkopplungs-Muster}
-\definition[1]{Entkopplungs-Muster}{Entkopplungsmuster teilen ein System in mehrere Einheiten, so dass einzelne Einheiten unabhängig voneinander erstellt, verändert, ausgetauscht und wiederverwendet werden können. Der Vorteil von Entkopplungsmustern ist, dass ein System durch lokale Änderungen verbessert, angepasst und erweitert werden kann, ohne das ganze System zu modifizieren.}
+\definition[1]{Entkopplungs-Muster}{Entkopplungsmuster \important{teilen} ein System in \important{mehrere Einheiten}, so dass einzelne Einheiten unabhängig voneinander erstellt, verändert, ausgetauscht und wiederverwendet werden können. Der Vorteil von Entkopplungsmustern ist, dass ein System durch \important{lokale Änderungen} verbessert, angepasst und erweitert werden kann, \important{ohne das ganze} System zu modifizieren.}
 % Adapter
 \subsubsection{Adapter}
-\definition[0]{Adapter}{Passt die Schnittstelle einer Klasse an eine Andere von ihren Klienten erwartete Schnittstelle an.}
+\definition[0]{Adapter}{Passt die \important{Schnittstelle} einer Klasse an \important{eine Andere} von ihren Klienten erwartete Schnittstelle an.}
 \anmerkung[0]{}{$\Rightarrow$ Klassen können zusammenarbeiten, die wegen inkompatibler Schnittstelle ansonsten nicht in der Lage wären.}
 \fig{Adapter ohne Mehrfachvererbung}{./data/entwurfsmuster/entkopplungsmuster/adapter_1.png}
 \fig{Adapter mit Mehrfachvererbung}{./data/entwurfsmuster/entkopplungsmuster/adapter_2.png}
 \newpage
 \subsubsection{Beobachter / Observer}
-\definition[0]{Beobachter}{Ein Beobachter beobachtet ein Objekt und informiert andere Objekte über Änderungen an diesem.}
-\anmerkung[0]{}{Ein Beobachter definiert eine 1-zu-n Abhängigkeit zwischen Objekten, so dass die Änderung eines Zustandes eines Objektes dazu führt, dass alle abhängigen Objekte benachrichtigt und automatisch aktualisiert werden.}
+\definition[0]{Beobachter}{Ein Beobachter \important{beobachtet} ein Objekt und \important{informiert} andere Objekte \important{über Änderungen} an diesem.}
+\anmerkung[0]{}{Ein Beobachter definiert eine \important{1-zu-n Abhängigkeit} zwischen Objekten, so dass die \important{Änderung} eines Zustandes eines Objektes dazu führt, dass alle abhängigen Objekte \important{benachrichtigt} und automatisch \important{aktualisiert} werden.}
 \newline
 \fig{Struktur eines Beobachters}{./data/entwurfsmuster/entkopplungsmuster/observer_1.png}
 \newline
 \fig{Beobachter - Beispiel aus Java}{./data/entwurfsmuster/entkopplungsmuster/observer_2.png}
 \anmerkung[0]{Anwendbarkeit}{Wenn die Änderung eines Objekts die Änderung anderer Objekte verlangt und man nicht weiß, wie viele und welche Objekte geändert werden müssen.}
 \anmerkung[1]{}{Wenn ein Objekt andere Objekte benachrichtigen muss, ohne Annahmen über diese Objekte zu treffen.}
-\anmerkung[0]{Konsequenzen}{Beobachter können neu hinzugefügtoder entferntwerden, ohnedas Subjekt oder andere Beobachter zu ändern}
+\anmerkung[0]{Konsequenzen}{Beobachter können neu hinzugefügt oder entfernt werden, ohne das Subjekt oder andere Beobachter zu ändern}
  
 \subsubsection{Brücke / Bridge}
-\definition[0]{Brücke}{Die Brücke trennt Abstraktion von ihrer Implementierung, sodass beide unabhängig voneinander variiert werden können.}
+\definition[0]{Brücke}{Die Brücke \important{trennt Abstraktion} von ihrer \important{Implementierung}, sodass beide \important{unabhängig} voneinander \important{variiert} werden können.}
 \fig{Brücke}{./data/entwurfsmuster/entkopplungsmuster/bridge.png}
 \\
 Anwendbarkeit:
@@ -61,7 +62,7 @@ Anwendbarkeit:
 \warn[0]{}{Ein Iterator funktioniert immer sequenziell}
 \anmerkung[0]{}{Das momentane Element kann aus der Datenstruktur entfernt werden.}
 \anmerkung[0]{Anwendbarkeit}{Um den Zugriff auf den Inhalt eines zusammengesetzten Objekts zu ermöglichen, ohne dabei seine interne Struktur offenzulegen.}
-\anmerkung[0]{}{Robust ist der Iterator, weil er gleichzeitig mehrere Traversierungen ermöglicht. Jeder Iterator enthält eine eigene „Laufvariable“.}
+\anmerkung[0]{}{Robust ist der Iterator, weil er \important{gleichzeitig mehrere Traversierungen} ermöglicht. Jeder Iterator enthält eine eigene „Laufvariable“.}
 
 \newpage
 \subsubsection{Stellvertreter / Proxy}
@@ -212,7 +213,7 @@ Anwendbar, wenn
 
 
 \subsubsection{Memento (engl. memento)}
-\definition[0]{Memento}{Erfasst und \important{externalisiert} den \important{internen Zustand} eines Objekts, ohne seine Kapselung zu verletzzen, do dass das Objekt später in diesen Zustand zurückversetzt werden kann.}
+\definition[0]{Memento}{Erfasst und \important{externalisiert} den \important{internen Zustand} eines Objekts, ohne seine Kapselung zu verletzen, so dass das Objekt später in diesen Zustand zurückversetzt werden kann.}
 \fig{Mementomusterstruktur}{./data/entwurfsmuster/zustandshandhabungsmuster/memento.png}
 Anwendbar, wenn...
 \begin{itemize}

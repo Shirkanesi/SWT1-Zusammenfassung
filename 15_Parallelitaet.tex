@@ -90,6 +90,8 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
     \end{itemize}
 \end{itemize}
 
+\newpage
+
 \subsubsection{Kritische Abschnitte}
 \begin{itemize}
     \item Ein Bereich, in dem gleichzeitige Zugriffe auf gemeinsam genutzte Daten stattfinden, ist ein \babyblue{kritischer Abschnitt}
@@ -111,6 +113,11 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
 \end{itemize}
 
 \fig{Waiting-Area und Monitor}{./data/parallel/monitor_wait}
+
+\vspace{0.5cm}
+\definition[0]{Verklemmung}{Eine Verklemmung (engl. Deadlock) ist eine Blockade, die durch eine zyklische Abhängigkeit von Fäden auf Ressourcen hervorgerufen wird. Eine Verklemmung führt dazu, dass alle beteiligten Fäden ewig im Wartezustand verharren}
+
+\newpage
 
 \subsubsection{Semaphoren}
 \begin{itemize}
@@ -135,3 +142,22 @@ In der Vorlesung wird nur \important{gemeinsamer Speicher} (shared memory) behan
         \null\quad        \}\\
     \}
 \end{code}
+
+\subsection{Bewertung von parallelen Algorithmen}
+\subsubsection{Gesamtlaufzeit}
+\[
+    \mathcal{T}(p) = \sigma + \frac{\pi}{p}, \text{ wobei}
+\]
+ $\sigma$ die Zeit für die Ausführung des sequentiellen Teils und\\
+ $\pi$ die Zeit für die sequentielle Ausführung des parallelisierbaren Teils darstellt.
+ 
+ \subsubsection{Beschleunigung (\textit{Speedup})}
+ \[
+    \mathcal{S}(p)=\frac{\mathcal{T}(1)}{\mathcal{T}(p)}
+ \]
+ \subsubsection{Effizienz}
+ \[
+    \mathcal{E}(p) = \frac{\mathcal{T}(1)}{p\cdot \mathcal{T}(p)} = \frac{\mathcal{S}(p)}{p}
+ \]
+ Idealfall:\\
+ $\Rightarrow$ $\mathcal{S}(p)=p$ und $\mathcal{E}(p)=1$

@@ -1,0 +1,107 @@
+\section{Aufwandsschätzung}
+Prinzipiell gilt:
+\begin{itemize}
+    \item Personalkosten machen den Hauptteil der Kosten auf
+    \item Viel Zeit geht für Meetings und Dokumente drauf
+\end{itemize}
+
+\subsection{Zeiteiheiten}
+\begin{itemize}
+    \item Personenwoche besteht aus 5 Personentagen zu jeweils 8 Personenstunden
+    \item Personenmonat besteht aus 4 Personenwochen
+    \item Typischerweise besteht ein Personenjahr aus 9 bis 10 Personenmonaten
+\end{itemize}
+
+Personen... ist synonym zu Mitarbeiter...
+
+\subsection{Einflussfaktoren und Teufelsquadrat}
+\begin{itemize}
+    \item Qualität
+    \item Quantität
+    \item Entwicklungsdauer
+    \item Kosten
+\end{itemize}
+
+\fig{Teufelsquadrat mit beispielhafter Erhöhung der Qualität und Entwicklungsdauer sowie der resultierender Erhöhung der Kosten und geminderter Quantität}{./data/Teufelsquadrat.png}
+
+\subsection{Analogiemethode}
+Vorteile:
+\begin{itemize}
+    \item Relativ einfache und intuitive Schätzmethode
+\end{itemize}
+Nachteile:
+\begin{itemize}
+    \item intuitive, globale Schätzung aufgrund individueller Erfahrungen, nicht übertragbar
+    \item fehlende allgemeine Vorgehensweise
+\end{itemize}
+Variante davon $\Rightarrow$ \anfuehrung{Planungspoker}
+
+\subsection{Relationsmethode}
+\begin{itemize}
+    \item Das zu schätzende Produkt wird mit ähnlichen Entwicklungen verglichen
+    \item Aufwandsanpassung erfolgt mit \important{Erfahrungswerten}
+    \item Im Gegensatz zur Analogiemethode stehen für die Aufwandsanpassung Faktorenlisten und Richtlinien zur Verfügung
+\end{itemize}
+
+\subsection{Multiplikatormethode (Aufwand-pro-Einheit-Methode)}
+\begin{itemize}
+    \item Das zu entwickelnde System wird soweit in Teilprodukte zerlegt, bis jedem Teilprodukt ein bereits feststehender Aufwand zugeordnet werden kann (z.B. in LOC)
+    \item Der Aufwand pro Teilprodukt wird meist durch Analyse vorhandener Produkte ermittelt
+    \item Oft werden auch die Teilprodukte bestimmten Kategorien zugeordnet
+    \item Die Anzahl der Teilprodukte, die einer Kategorie zugeordnet sind, wird mit dem Aufwand dieser Kategorie multipliziert
+    \item Die erhaltenen Werte für eine Kategorie werden dann addiert, um den Gesamtaufwand zu erhalten
+\end{itemize}
+
+\subsection{Phasenaufteilung}
+Ermittlung des Verhältsnisses der verschiedenen Phasen anhand vorheriger Projekte
+
+\subsection{COCOMO II}
+\begin{itemize}
+    \item Berechnet aus der geschätzten Größe und 22 Einflussfaktoren die Gesamtdauer eines SW-Projektes in Personenmonaten.
+    \item Die Größe wird in KLOC oder unjustierten Funktionspunkten geschätzt.
+    \item COCOMO II ist Nachfolger des 1981 entwickelten, ersten COCOMO
+    \begin{itemize}
+        \item COCOMO: Constructive Cost Model
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Formel}
+\[PM=A \cdot (Size)^{1,01+0,01 \cdot \sum^{5}_{j=1}SF_j} \cdot \prod^{17}_{i=1}EM_i\]
+
+\begin{itemize}
+    \item PM: Anzahl Prosonenmonate
+    \item A: Konstante für die Kalibrierung des Modells
+    \item Size: geschätzter Umfang der Software in KLOC oder unjustierten Funktionspunkten
+    \item $SF_j$: Skalierungsfaktoren
+    \item $EM_i$: multiplikative Kostenfaktoren
+\end{itemize}
+
+\subsubsection{Skalierungsfaktoren}
+\begin{itemize}
+    \item Precedentedness (Bekanntheit)
+    \item Development Flexibility (Entwicklungsflexibilität)
+    \item Architecture (Architekture)
+    \item Team cohesion (Teamzusammenhalt)
+    \item Process maturity (Prozessreife)
+\end{itemize}
+\subsubsection{Multiplikative Kostenfaktoren}
+\begin{itemize}
+    \item \important{Produkt}faktoren
+    \item \important{Plattform}faktoren
+    \item \important{Personal}faktoren
+    \item \important{Projekt}faktoren
+\end{itemize}
+Jeweils Nominalwert von 1
+
+\subsection{Delphi-Schätzmethode}
+\begin{itemize}
+    \item Man setzt eine Menge von Schätzern (Experten) ein, die mit der geplanten SW Erfahrung haben
+    \item In einer oder mehreren Runden wird folgendes gemacht:
+    \begin{itemize}
+        \item Jeder Schätzer gibt anonym einen Schätzwert plus Begründung auf einer Karte ab
+        \item Der Moderator fasst die Ergebnisse zusammen, einschl. der Begründungen
+        \item Wenn die Werte weit auseinander liegen, wird eine neue Runde durchgeführt, in der die Schätzer ihre Schätzung ändern dürfen. Die Hoffnung ist, dass sich die Schätzwerte zum „richtigen“ Wert hin angleichen
+    \end{itemize}
+    \item Wenn sie nichts mehr ändert, nimmt man den Durchschnittswert
+    \item Wichtig: erste Schätzung ist unbeeinflusst von anderen Teilnehmern
+\end{itemize}

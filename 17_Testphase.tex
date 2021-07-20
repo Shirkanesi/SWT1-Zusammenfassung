@@ -8,7 +8,7 @@
 \definition[0]{Attrappe}{Eine Attrappe (engl. dummy) simuliert die Implementierung zu Testzwecken}
 \definition[1]{Nachahmung}{Eine Nachahmung (engl. mock object) ist eine Attrappe mit zusätzlicher Funktionalität, wie bspw. das Einstellen der Reaktion der Nachahmung auf bestimmte Eingaben oder das Überprüfen des Verhaltens des „Klienten“}
 
-\subsubsection{Arten von Fehlern}
+\subsubsection{Fehlerklassen}
 
 \definition[0]{Anforderungsfehler (Fehler im Pflichtenheft)}{z.B.: Inkorrekte Angaben der Benutzerwünsche, unvollständige Angaben über Anforderungen, Inkonsistenz verschiedener Anforderungen oder Undurchführbarkeit}
 \definition[0]{Entwurfsfehler (Fehler in der Spezifikation)}{Zu den Entwurfsfehlern gehören eine unvollständige oder fehlerhafte Umsetzung der Anforderung, Inkonsistenz der Spezifikation oder des Entwurfs, sowie Inkonsistenz zwischen Anforderung, Spezifikation und Entwurf.}
@@ -20,7 +20,7 @@
     \item Korrektheit nur mit formalem Korrektheitsbeweis möglich, welcher nur für kleine Programme möglich ist.
 \end{itemize}
 
-\subsection{Arten von Fehlern}
+\subsection{Fehlerarten}
 \begin{itemize}
     \item Ein \babyblue{Versagen} oder \babyblue{Ausfall} ist die Abweichung des Verhaltens der Software von der Spezifikation.
     \item Ein \babyblue{Defekt} ist ein Mangel in einem Softwareprodukt, der zu einem Versagen führen kann.
@@ -106,7 +106,7 @@ Falls Zusicherung false ergibt, wird Ausnahme AssertionError ausgelöst.
 \begin{itemize}
     \item Konvention für \babyblue{öffentliche} Methoden
 \begin{itemize}
-    \item Überprüfung der Eingabeparameter nicht mit zusicherungen, sondern mit IllegalArgumentException.
+    \item Überprüfung der Eingabeparameter nicht mit zusicherungen, sondern mit \texttt{IllegalArgumentException}.
     \item \babyblue{Folge}: Klientprogramme können darauf reagieren
 \end{itemize}
 \item Konvention für \babyblue{private} Methoden

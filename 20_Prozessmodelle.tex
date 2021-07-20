@@ -1,0 +1,47 @@
+\section{Prozessmodelle}
+
+\subsection{Programmieren durch Probieren}
+\begin{itemize}
+    \item Auch \glqq code \& fix\grqq\ oder \glqq trial \& error\grqq\  genannt
+    \item Vorgehen
+    \begin{itemize}
+        \item Vorläufiges Programm erstellen
+        \item Anforderung, Entwurf, Testen, Wartung überlegen
+        \item Programm entsprechend \glqq verbessern\grqq
+    \end{itemize}
+    \item Eigenschaften
+    \begin{itemize}
+        \item \glqq nutzlosen\grqq\ Zusatzaufwand
+        \item Erzeugt schlecht stukturierten Code wegen unsystematischer Verbesserungen und fehlender Entwurfsphase
+    \end{itemize}
+    \item Probleme
+    \begin{itemize}
+        \item Mangelhafte Aufgabenerfüllung wegen Fehlens der Anforderungsanylyse
+        \item Wartung/Pflege kostspielig, da Programm nicht darauf vorbereitet
+        \item Dokumentation nicht vorhanden
+        \item Für Teamarbeit vollständig ungeeignet, da keine Aufgabenaufteilung vorgesehen.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Wasserfallmodell (auch Phasenmodell)}
+\begin{itemize}
+    \item Unterteilt in Phasen. Siehe oben.
+    \item Jede Aktivität wird streng sequentiell vollständig ausgeführt.
+    \item Am Ende jeder Aktivität steht ein fertiges Dokument
+    \item Benutzerbeteiligung nur in der Definitionsphase vorgesehen.
+    \item Probleme
+    \begin{itemize}
+        \item Keine phasenübergreifende Rückkopplung vorgesehen
+        \item Parallelisierungspotential möglicherweise nicht richtig ausgeschöpft
+        \item Zwingt zu genauen Spezifikation auch schlecht verstandener Benutzerschnittstellen
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection{\glqq V-Modell 97 \grqq - das \glqq handelsübliche \grqq}
+\begin{itemize}
+    \item V wie Vorgehensmodell
+    \item Jede Aktivität hat einen eigenen Prüfungsschritt
+\end{itemize}
+\fig{V-Modell 97}{./data/vModel97}

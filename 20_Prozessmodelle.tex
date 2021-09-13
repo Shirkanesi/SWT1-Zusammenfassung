@@ -39,9 +39,132 @@
 
 \newpage
 
-\subsection{\glqq V-Modell 97 \grqq - das \glqq handelsübliche \grqq}
+\subsection{V-Modell 97}
 \begin{itemize}
     \item V wie Vorgehensmodell
     \item Jede Aktivität hat einen eigenen Prüfungsschritt
 \end{itemize}
+Die Phasen sind im V-Modell-XT nicht einer Reihenfolge zugeordnet.
+
+
 \fig{V-Modell 97}{./data/vModel97}
+\fig{V-Modell Produktzustände}{./data/vModelxt}
+
+
+\subsection{Prototypmodell}
+Erstelle zunächst einen Prototyp mit mindester Funktionalität. Dieser wird dem Kunden vorgezeigt und Verbesserungen sowie Anforderung gesammelt.
+\important{Danach wird der Prototyp weggeworfen} und der Prozess mit einem anderen Modell (Wasserfall, V-Modell) fortgeführt.
+\\
+\fig{Prototypmodell}{./data/prototyp}
+
+
+\subsection{Iteratives Modell}
+\begin{itemize}
+    \item Idee: Zumindest Teile der Funktionalität lassen sich klar definieren und realisieren
+    \item Daher: Funktionalität wird Schritt für Schritt erstellt und dem Produkt \glqq hinzugefügt\grqq
+    \item Gleiche Vorteile und Einsatzgebiete wie Prototypmodell
+\end{itemize}
+Unterschiedliche Ansätze für Planungs- und Analysephase:
+\begin{itemize}
+    \item \important{Evolutionär}: Plane und analysiere nur den Teil, der als nächstes hinzugefügt wird
+    \item \important{Inkrementell}: Plane und analysiere alles und iteriere dann n-mal über Entwurfs-, Implmentierungs- und Testphase
+    \item[$\rightarrow$] Mischformen und Flexibilität angebracht
+\end{itemize}
+\fig{Iteratives Modell}{./data/iterativ}
+
+\subsection{Synchronisiere und Stabilisiere}
+\begin{itemize}
+    \item Auch \glqq Microsoft Modell\grqq
+    \item Ansatz
+    \begin{itemize}
+        \item Organisiere die 200 Programmierer eines Projektes in \glqq kleinen Hacker-Teams \grqq
+        \item Aber: Synchronisiere regelmäßig
+        \item Und Stabilisiere regelmäßig
+    \end{itemize}
+    \item Drei Phasen
+    \begin{itemize}
+        \item Planungsphase
+        \item Entwicklungsphase in 3 Subprojekten (Milestones)
+        \item Stabilisierungsphase
+    \end{itemize}
+\end{itemize}
+\begin{itemize}
+    \item Planungsphase
+    \begin{itemize}
+        \item 3-12 Monate
+    \end{itemize}
+    \item Developement
+    \begin{itemize}
+        \item 6-12 Monate
+        \item Wichtigkeit unterteilt
+        \item Unterteilt in 3 Milestones
+    \end{itemize}
+    \item Stabilisiere
+    \begin{itemize}
+        \item 3-8 Monate
+    \end{itemize}
+\end{itemize}
+\begin{itemize}
+    \item Pro
+    \begin{itemize}
+        \item Effektiv durch kurze Produktzyklen
+        \item Priorisierung nach Funktion
+        \item Fortschritt ohne vollständige Spezifikation möglich
+        \item Viele Entwickler arbeiten effektiv in kleinen Gruppen.
+    \end{itemize}
+    \item Kontra
+    \begin{itemize}
+        \item Ungeeignet für manche Art von Software
+        \item Mündliche Arbeitsweise 
+        \item Alle 18 Monate sind 50\% des Codes überarbeitet worden
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Extremes Programmieren - XP}
+\subsubsection{Paarprogrammierung}
+Zwei Programmierer arbeiten an einer Tastatur und Maus, wobei die Qualität des Codes gesteigert werden soll. Dies verdoppelt jedoch nahezu die Kosten. Es kompensiert jedoch fehlende Inspektionen/Reviews.
+\begin{itemize}
+    \item Fahrer: Denkt an Implementierung des Algorithmus
+    \item Beifahrer: Denkt strategisch und führt ständige Durchsicht durch
+\end{itemize}
+
+\subsubsection{Testgetriebene Entwicklung [TDD]}
+Motiviere jede Verhaltensänderung am Quelltext durch einen automatisierten Test.
+Testcode vor Anwendungscode schreiben.
+Inkrementeller Entwurf (nur so viel, wie gebraucht wird. Kein vorausschauender Entwurf)
+
+Kleine Schritte
+
+\fig{Test-Driven-Development}{./data/tdd}
+
+\subsubsection{Nachteile von XP}
+\begin{itemize}
+    \item Kunde muss mitarbeiten und dies auch wollen
+    \item Fehlende Produktdokumentation
+    \item Nicht reproduzierbarer Prozess
+\end{itemize}
+
+\subsection{Scrum}
+Drei Säulen der empirischen Verbesserung:
+\begin{itemize}
+    \item Transparenz
+    \item Überprüfung
+    \item Anpassung
+\end{itemize}
+
+Bei Scrum gibt es folgende Rollen:
+\begin{itemize}
+    \item Produktverantwortliche (Product Owner) ist für die Wertsteigerung des Produktes und die Anforderungsliste. Legt Anforderungen fest und priorisiert diese (für jeden Sprint)
+    \item Scrum Master stellt die Einhaltung der Scrum-Werte und -Techniken sicher. Sorgt für die Produktivität und Funktionalität des Entwicklungsteams. Beseitigt Hindernisse und unterstützt die Zusammenarbeit aller Rollen
+    \item Entwickler sind für die Umsetzung der in der Aufgabenliste definierten Aufgaben zuständig
+\end{itemize}
+
+In Scrum wird die (veränderliche) Anforderungsliste in 2-4-wöchigen Sprints abgearbeitet
+\begin{itemize}
+    \item Sprintplanung (\textit{sprint planning})
+    \item Tägliches Scrum-Treffen (\textit{daily scrum})
+    \item Review-treffen am Ende eines Sprints (\textit{sprint review})
+    \item Retrospektive (\textit{sprint retrospective})
+\end{itemize}
+\fig{Scrum}{./data/scrum}

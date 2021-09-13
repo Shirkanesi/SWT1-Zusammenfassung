@@ -1,7 +1,7 @@
 \section{Aufwandsschätzung}
 Prinzipiell gilt:
 \begin{itemize}
-    \item Personalkosten machen den Hauptteil der Kosten auf
+    \item Personalkosten machen den Hauptteil der Kosten aus
     \item Viel Zeit geht für Meetings und Dokumente drauf
 \end{itemize}
 
@@ -25,6 +25,9 @@ Personen... ist synonym zu Mitarbeiter...
 \fig{Teufelsquadrat mit beispielhafter Erhöhung der Qualität und Entwicklungsdauer sowie der resultierender Erhöhung der Kosten und geminderter Quantität}{./data/Teufelsquadrat.png}
 
 \subsection{Analogiemethode}
+\begin{itemize}
+    \item Aufwandsschätzung anhand ähnlicher, bereits durchgeführter Projekte.
+\end{itemize}
 Vorteile:
 \begin{itemize}
     \item Relativ einfache und intuitive Schätzmethode
@@ -56,20 +59,18 @@ Variante davon $\Rightarrow$ \anfuehrung{Planungspoker}
 Ermittlung des Verhältsnisses der verschiedenen Phasen anhand vorheriger Projekte
 
 \subsection{COCOMO II}
+COCOMO II: \textbf{Co}nstructive \textbf{Co}st \textbf{Mo}del II
 \begin{itemize}
     \item Berechnet aus der geschätzten Größe und 22 Einflussfaktoren die Gesamtdauer eines SW-Projektes in Personenmonaten.
     \item Die Größe wird in KLOC oder unjustierten Funktionspunkten geschätzt.
     \item COCOMO II ist Nachfolger des 1981 entwickelten, ersten COCOMO
-    \begin{itemize}
-        \item COCOMO: Constructive Cost Model
-    \end{itemize}
 \end{itemize}
 
 \subsubsection{Formel}
 \[PM=A \cdot (Size)^{1,01+0,01 \cdot \sum^{5}_{j=1}SF_j} \cdot \prod^{17}_{i=1}EM_i\]
 
 \begin{itemize}
-    \item PM: Anzahl Prosonenmonate
+    \item PM: Anzahl Personenmonate
     \item A: Konstante für die Kalibrierung des Modells
     \item Size: geschätzter Umfang der Software in KLOC oder unjustierten Funktionspunkten
     \item $SF_j$: Skalierungsfaktoren
